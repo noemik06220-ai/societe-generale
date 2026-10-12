@@ -1,21 +1,157 @@
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fidélité Démo</title>
 
-<script>
-  const SUPABASE_URL = "TON_API_URL";
-  const SUPABASE_KEY = "TA_CLE_PUBLISHABLE";
+  <style>
+    * { box-sizing: border-box; }
 
-  const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #292929;
+    }
 
-  document.getElementById("loyaltyForm")
-    .addEventListener("submit", async function(event) {
+    header {
+      background: #d71920;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 { margin: 0; }
+
+    .banner {
+      padding: 12px;
+      background: #fff0f0;
+      color: #a51017;
+      text-align: center;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    main {
+      max-width: 500px;
+      margin: 28px auto;
+      padding: 24px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px #00000012;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 7px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: 0;
+      border-radius: 6px;
+      background: #d71920;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    #message {
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      color: #666;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Fidélité Démo</h1>
+    <p>Prototype de test</p>
+  </header>
+
+  <div class="banner">
+    SITE FICTIF — DONNÉES DE TEST UNIQUEMENT
+  </div>
+
+  <main>
+    <h2>Tester l'enregistrement</h2>
+    <p>Utilise uniquement des informations inventées.</p>
+
+    <form id="loyaltyForm">
+      <label for="nom">Nom fictif</label>
+      <input id="nom" required maxlength="80" autocomplete="off">
+
+      <label for="prenom">Prénom fictif</label>
+      <input id="prenom" required maxlength="80" autocomplete="off">
+
+      <label for="carte">Numéro de démonstration</label>
+      <input
+        id="carte"
+        required
+        pattern="DEMO-[0-9]{6}"
+        title="Format attendu : DEMO-123456"
+        placeholder="DEMO-123456"
+        autocomplete="off"
+      >
+
+      <button id="submitButton" type="submit">
+        Enregistrer le test
+      </button>
+    </form>
+
+    <p id="message" role="status" aria-live="polite"></p>
+  </main>
+
+  <footer>
+    Démonstration uniquement. Ne saisis aucune donnée réelle.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL =
+      "https://jjtwodgevtkltqovargh.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
+
+    const client = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+
+    const form = document.getElementById("loyaltyForm");
+    const message = document.getElementById("message");
+    const button = document.getElementById("submitButton");
+
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
-
-      const message = document.getElementById("message");
-      const bouton = this.querySelector('button[type="submit"]');
 
       const donnees = {
         nom: document.getElementById("nom").value.trim(),
@@ -24,13 +160,12 @@
       };
 
       if (!/^DEMO-[0-9]{6}$/.test(donnees.numero_demo)) {
-        message.textContent =
-          "Utilise un numéro de test comme DEMO-123456.";
+        message.textContent = "Utilise le format DEMO-123456.";
         return;
       }
 
-      bouton.disabled = true;
-      message.textContent = "Enregistrement en cours…";
+      button.disabled = true;
+      message.textContent = "Enregistrement du test…";
 
       try {
         const { error } = await client
@@ -40,14 +175,16 @@
         if (error) throw error;
 
         message.textContent =
-          "Enregistrement de démonstration réussi !";
-        this.reset();
+          "Test enregistré dans Supabase avec succès.";
+        form.reset();
       } catch (error) {
-        console.error(error);
+        console.error("Erreur Supabase :", error);
         message.textContent =
-          "Erreur : vérifie l’URL, la clé publique et les autorisations de la table.";
+          "Échec de l'enregistrement. Vérifie la table et ses autorisations.";
       } finally {
-        bouton.disabled = false;
+        button.disabled = false;
       }
     });
-</script>
+  </script>
+</body>
+</html>
