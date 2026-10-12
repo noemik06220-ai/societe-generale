@@ -4,115 +4,193 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111111">
-  <title>BANQUE DE LUXE</title>
+  <title>SEPHORA — Beauté & Promotions</title>
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+
+    :root {
+      --gold: #d4af67;
+      --gold-light: #f5e4b7;
+      --black: #111111;
+      --white: #ffffff;
+      --muted: #777777;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      color: #202020;
+      color: var(--black);
+      background: #f7f4ed;
     }
 
     header {
-      background: #111;
-      color: white;
+      background: var(--black);
+      color: var(--white);
       text-align: center;
-      padding: 32px 16px;
-      border-bottom: 5px solid #d71920;
+      padding: 28px 16px 24px;
+      border-bottom: 3px solid var(--gold);
     }
 
-    header h1 {
+    .brand {
       margin: 0;
-      font-size: 30px;
-      letter-spacing: 3px;
+      font-size: clamp(30px, 6vw, 48px);
+      letter-spacing: 7px;
+      font-weight: 900;
     }
 
-    header p {
-      margin-bottom: 0;
-      color: #ddd;
+    .brand-subtitle {
+      margin: 10px 0 0;
+      color: var(--gold-light);
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
     }
 
-    .banner {
-      padding: 12px;
-      background: #fff0f0;
-      color: #a51017;
+    .promo-banner {
+      background: #f3e5bd;
+      color: #473516;
       text-align: center;
+      padding: 12px 16px;
       font-size: 12px;
       font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 54px 20px 48px;
+      color: white;
+      background:
+        radial-gradient(ellipse at top, #514329 0%, transparent 55%),
+        linear-gradient(135deg, #171512, #302719 55%, #111111);
+    }
+
+    .eyebrow {
+      color: var(--gold-light);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 4px;
+    }
+
+    .hero h2 {
+      max-width: 700px;
+      margin: 18px auto;
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: clamp(34px, 7vw, 62px);
+      line-height: 1.1;
+    }
+
+    .hero h2 span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .hero p {
+      max-width: 480px;
+      margin: 0 auto;
+      color: #e2ddd2;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .promo-tag {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 11px 19px;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     main {
-      max-width: 520px;
-      margin: 28px auto;
-      padding: 26px;
+      width: min(100% - 28px, 560px);
+      margin: 32px auto;
+      padding: 30px;
       background: white;
-      border-radius: 10px;
-      border-top: 4px solid #d71920;
-      box-shadow: 0 5px 22px #00000012;
+      border: 1px solid #e8dfcc;
+      border-top: 4px solid var(--gold);
+      border-radius: 4px;
+      box-shadow: 0 12px 35px #33250d12;
     }
 
-    h2 {
-      margin-top: 0;
+    .form-kicker {
+      margin: 0 0 10px;
+      color: #92743c;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    main h2 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-weight: normal;
+      font-size: 29px;
     }
 
     .intro {
+      margin: 13px 0 22px;
       color: #666;
-      line-height: 1.6;
       font-size: 14px;
+      line-height: 1.7;
     }
 
     label {
       display: block;
       margin-top: 17px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
     }
 
     input {
       width: 100%;
-      padding: 13px;
-      margin-top: 7px;
-      border: 1px solid #ccc;
-      border-radius: 7px;
-      font-size: 16px;
+      margin-top: 8px;
+      padding: 14px;
+      border: 1px solid #d8d2c5;
+      border-radius: 3px;
       background: #fff;
       color: #222;
+      font: inherit;
+      font-size: 15px;
     }
 
     input:focus {
-      outline: 2px solid #d71920;
-      border-color: #d71920;
+      outline: 2px solid var(--gold);
+      border-color: var(--gold);
     }
 
     .hint {
       display: block;
-      margin-top: 6px;
-      color: #666;
+      margin-top: 8px;
+      color: var(--muted);
       font-size: 12px;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     button {
       width: 100%;
-      margin-top: 24px;
-      padding: 15px;
-      border: none;
-      border-radius: 7px;
-      background: #d71920;
-      color: white;
-      font-size: 16px;
+      margin-top: 25px;
+      padding: 16px;
+      border: 1px solid #9d7b39;
+      border-radius: 3px;
+      background: linear-gradient(110deg, #b28b43, #f0d99b, #b28b43);
+      color: #17130b;
+      font-size: 13px;
       font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       cursor: pointer;
+      transition: filter .2s, transform .2s;
     }
 
-    button:hover {
-      background: #b71319;
-    }
+    button:hover { filter: brightness(1.06); }
+    button:active { transform: scale(.99); }
 
     button:disabled {
       opacity: .6;
@@ -122,55 +200,77 @@
     #message {
       margin-top: 18px;
       text-align: center;
-      line-height: 1.5;
+      font-size: 14px;
+      line-height: 1.6;
       overflow-wrap: anywhere;
     }
 
-    .success {
-      color: #16733a;
-    }
+    .success { color: #176b3a; }
+    .error { color: #b51c25; }
 
-    .error {
-      color: #c01820;
+    .notice {
+      margin-top: 20px;
+      padding: 13px;
+      background: #f7f4ed;
+      border-left: 3px solid var(--gold);
+      color: #5f5747;
+      font-size: 12px;
+      line-height: 1.7;
     }
 
     footer {
-      padding: 18px;
+      padding: 25px 16px;
+      background: #111;
+      color: #c8c1b4;
       text-align: center;
-      color: #666;
-      font-size: 12px;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    footer strong {
+      color: var(--gold-light);
+      letter-spacing: 2px;
     }
 
     @media (max-width: 560px) {
       main {
-        margin: 18px 12px;
-        padding: 20px;
+        padding: 22px 18px;
+        margin: 22px auto;
       }
 
-      header h1 {
-        font-size: 25px;
-      }
+      .hero { padding: 42px 18px; }
+      .brand { letter-spacing: 5px; }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>BANQUE DE LUXE</h1>
-    <p>Espace profil — démonstration</p>
+    <h1 class="brand">SEPHORA</h1>
+    <p class="brand-subtitle">Beauté · Élégance · Inspiration</p>
   </header>
 
-  <div class="banner">
-    PROTOTYPE DE TEST — DONNÉES FICTIVES UNIQUEMENT
+  <div class="promo-banner">
+    DÉCOUVREZ NOTRE UNIVERS BEAUTÉ
   </div>
 
+  <section class="hero">
+    <div class="eyebrow">L'univers de la beauté</div>
+    <h2>Un éclat <span>qui vous ressemble</span></h2>
+    <p>
+      Découvrez une sélection inspirée de l'univers des
+      cosmétiques, dans une ambiance élégante et dorée.
+    </p>
+    <div class="promo-tag">Offres & nouveautés</div>
+  </section>
+
   <main>
-    <h2>Créer mon profil de test</h2>
+    <p class="form-kicker">Espace personnel</p>
+    <h2>Créer mon profil</h2>
 
     <p class="intro">
-      Remplis les champs ci-dessous pour tester l'enregistrement
-      de ton profil dans Supabase. Utilise uniquement des données
-      fictives.
+      Complétez les champs ci-dessous pour enregistrer
+      votre profil.
     </p>
 
     <form id="loyaltyForm">
@@ -181,7 +281,7 @@
         type="text"
         maxlength="80"
         autocomplete="off"
-        placeholder="Nom de test"
+        placeholder="Votre nom"
         required
       >
 
@@ -192,11 +292,11 @@
         type="text"
         maxlength="80"
         autocomplete="off"
-        placeholder="Prénom de test"
+        placeholder="Votre prénom"
         required
       >
 
-      <label for="email">Adresse e-mail de test</label>
+      <label for="email">Adresse e-mail</label>
       <input
         id="email"
         name="email"
@@ -207,43 +307,50 @@
         required
       >
 
-      <label for="telephone">Téléphone de test</label>
+      <label for="telephone">Téléphone</label>
       <input
         id="telephone"
         name="telephone"
         type="text"
         maxlength="30"
         autocomplete="off"
-        placeholder="Téléphone fictif"
+        placeholder="Téléphone"
         required
       >
 
-      <label for="carte">Identifiant fictif</label>
+      <label for="carte">Identifiant</label>
       <input
         id="carte"
         name="numero_demo"
         type="text"
         maxlength="50"
         autocomplete="off"
-        placeholder="Identifiant de démonstration"
+        placeholder="Identifiant de profil"
         required
       >
 
       <span class="hint">
-        Aucun format particulier n'est imposé à l'identifiant.
-        N'entre aucun numéro de carte bancaire réel.
+        Ce champ sert uniquement à un identifiant de profil.
+        N'entrez aucune donnée bancaire.
       </span>
 
       <button id="submitButton" type="submit">
-        Enregistrer le profil de test
+        Enregistrer mon profil
       </button>
     </form>
 
     <p id="message" role="status" aria-live="polite"></p>
+
+    <div class="notice">
+      Maquette indépendante à but de présentation, non officielle
+      et non affiliée à Sephora. Aucune offre commerciale réelle
+      n'est proposée sur cette page.
+    </div>
   </main>
 
   <footer>
-    BANQUE DE LUXE — Prototype de démonstration
+    <strong>SEPHORA · CONCEPT VISUEL</strong><br>
+    Maquette indépendante, non officielle et non affiliée à Sephora.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -289,9 +396,7 @@
         if (error) throw error;
 
         message.className = "success";
-        message.textContent =
-          "Profil de test enregistré avec succès.";
-
+        message.textContent = "Profil enregistré avec succès.";
         form.reset();
 
       } catch (error) {
@@ -300,7 +405,7 @@
         message.className = "error";
         message.textContent =
           "Erreur d'enregistrement : " +
-          (error.message || "vérifie la configuration Supabase.");
+          (error.message || "Vérifiez la configuration Supabase.");
 
       } finally {
         button.disabled = false;
