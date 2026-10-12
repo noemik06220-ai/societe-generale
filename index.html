@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SEPHORA — Paiement démo</title>
+<title>SEPHORA — Paiement de démonstration</title>
 
 <style>
 :root {
@@ -23,19 +23,20 @@
 
 body {
   background: var(--black);
-  color: #fff;
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
 }
 
 header {
   text-align: center;
-  padding: 27px 15px;
-  border-bottom: 1px solid #3c3020;
+  padding: 28px 15px;
+  border-bottom: 1px solid #403321;
+  background: #050505;
 }
 
 .logo {
-  font-size: 43px;
+  font-size: clamp(32px, 6vw, 46px);
   font-weight: 900;
   letter-spacing: 8px;
 }
@@ -45,10 +46,10 @@ header {
 }
 
 .tagline {
+  margin-top: 10px;
   color: var(--gold);
   font-size: 11px;
   letter-spacing: 3px;
-  margin-top: 10px;
 }
 
 .notice {
@@ -57,7 +58,7 @@ header {
   background: #211b10;
   color: var(--gold-light);
   font-size: 13px;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 main {
@@ -67,7 +68,7 @@ main {
 
 .intro {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 }
 
 .intro h1 {
@@ -88,16 +89,16 @@ main {
 }
 
 .panel {
-  padding: 25px;
-  border: 1px solid #403423;
   background: var(--panel);
+  border: 1px solid #403423;
   border-radius: 12px;
+  padding: 25px;
 }
 
 .panel h2 {
   color: var(--gold-light);
   font-size: 19px;
-  margin-bottom: 23px;
+  margin-bottom: 22px;
 }
 
 .product {
@@ -115,8 +116,8 @@ main {
   border-radius: 8px;
   display: grid;
   place-items: center;
-  font-size: 30px;
   color: var(--gold);
+  font-size: 30px;
 }
 
 .product-info {
@@ -136,8 +137,8 @@ main {
 
 .price {
   color: var(--gold-light);
-  white-space: nowrap;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 .summary-line {
@@ -145,16 +146,16 @@ main {
   justify-content: space-between;
   gap: 12px;
   padding: 13px 0;
-  font-size: 14px;
   color: #ccc;
+  font-size: 14px;
 }
 
 .total {
   border-top: 1px solid #57452b;
   margin-top: 8px;
   padding-top: 20px;
-  font-size: 19px;
   color: white;
+  font-size: 19px;
   font-weight: bold;
 }
 
@@ -173,10 +174,10 @@ label {
   color: #e4ddcf;
 }
 
-input, select {
+input {
   display: block;
   width: 100%;
-  padding: 13px;
+  padding: 14px;
   background: #090909;
   border: 1px solid #51432d;
   border-radius: 7px;
@@ -184,13 +185,13 @@ input, select {
   font-size: 15px;
 }
 
-input:focus, select:focus {
+input:focus {
   outline: 1px solid var(--gold);
+  border-color: var(--gold);
 }
 
-input[readonly] {
-  color: var(--gold-light);
-  background: #10100e;
+input::placeholder {
+  color: #777;
 }
 
 .row {
@@ -216,7 +217,7 @@ input[readonly] {
 button {
   width: 100%;
   padding: 16px;
-  border: 0;
+  border: none;
   border-radius: 7px;
   background: linear-gradient(110deg, #b18a42, #f0d69a, #b18a42);
   color: #111;
@@ -249,12 +250,13 @@ button:disabled {
 
 .error {
   display: none;
-  color: #ffb3b3;
-  background: #281313;
-  border: 1px solid #693333;
-  padding: 14px;
-  border-radius: 8px;
   margin-top: 16px;
+  padding: 14px;
+  border: 1px solid #693333;
+  border-radius: 8px;
+  background: #281313;
+  color: #ffb3b3;
+  font-size: 13px;
   line-height: 1.6;
   overflow-wrap: anywhere;
 }
@@ -292,7 +294,6 @@ footer {
   }
 
   .logo {
-    font-size: 34px;
     letter-spacing: 5px;
   }
 }
@@ -300,6 +301,7 @@ footer {
 </head>
 
 <body>
+
 <header>
   <div class="logo">SEPH<span>O</span>RA</div>
   <div class="tagline">BEAUTY · LUXE · ÉLÉGANCE</div>
@@ -307,17 +309,20 @@ footer {
 
 <div class="notice">
   <strong>MODE DÉMONSTRATION</strong><br>
-  Aucun débit réel. Les informations de carte sont fictives.
+  Paiement fictif uniquement — aucun débit réel.
 </div>
 
 <main>
   <section class="intro">
     <h1>Finaliser ma commande</h1>
-    <p>Complétez les informations de démonstration.<br>
-    La simulation sera enregistrée dans Supabase.</p>
+    <p>
+      Complète les champs ci-dessous pour tester la page.<br>
+      La simulation sera enregistrée dans Supabase.
+    </p>
   </section>
 
   <div class="layout">
+
     <section class="panel">
       <h2>Votre commande</h2>
 
@@ -351,15 +356,15 @@ footer {
       </div>
 
       <div class="info">
-        <strong>Simulation uniquement</strong><br>
-        Aucune transaction bancaire n'est effectuée.
-        Seules les informations de commande et de contact
-        indiquées dans le formulaire sont enregistrées.
+        <strong>À propos de cette page</strong><br>
+        Ceci est un prototype. Aucun paiement réel n'est effectué.
+        Les informations de carte fictive restent dans ton navigateur
+        et ne sont pas enregistrées dans Supabase.
       </div>
     </section>
 
     <section class="panel">
-      <h2>Vos informations</h2>
+      <h2>Informations de contact</h2>
 
       <form id="paymentForm">
         <div class="field">
@@ -367,8 +372,9 @@ footer {
           <input
             id="customerName"
             type="text"
+            placeholder="Nom de démonstration"
             maxlength="100"
-            autocomplete="name"
+            autocomplete="off"
             required
           >
         </div>
@@ -378,62 +384,95 @@ footer {
           <input
             id="customerEmail"
             type="email"
+            placeholder="demo@example.com"
             maxlength="254"
-            autocomplete="email"
+            autocomplete="off"
             required
           >
         </div>
 
         <div class="field">
-          <label for="customerPhone">Téléphone</label>
+          <label for="customerPhone">Téléphone de démonstration</label>
           <input
             id="customerPhone"
             type="tel"
+            placeholder="06 00 00 00 00"
             maxlength="25"
-            autocomplete="tel"
+            autocomplete="off"
             required
           >
         </div>
 
-        <h2 style="margin-top:26px">Paiement de démonstration</h2>
+        <h2 style="margin-top:28px">Carte fictive</h2>
 
         <div class="field">
-          <label for="cardNumber">Numéro de carte fictif</label>
+          <label for="cardName">Nom sur la carte fictive</label>
+          <input
+            id="cardName"
+            type="text"
+            placeholder="Camille Martin"
+            maxlength="60"
+            autocomplete="off"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="cardNumber">Identifiant de carte fictif</label>
           <input
             id="cardNumber"
-            value="DEMO-CARD-0001"
-            readonly
+            type="text"
+            placeholder="DEMO-1234-5678"
+            maxlength="19"
+            autocomplete="off"
+            required
           >
         </div>
 
         <div class="row">
           <div class="field">
             <label for="expiry">Expiration fictive</label>
-            <input id="expiry" value="12/30" readonly>
+            <input
+              id="expiry"
+              type="text"
+              placeholder="MM/AA"
+              maxlength="5"
+              autocomplete="off"
+              required
+            >
           </div>
 
           <div class="field">
-            <label for="cvv">CVV fictif</label>
-            <input id="cvv" value="XXX" readonly>
+            <label for="cvv">Code fictif</label>
+            <input
+              id="cvv"
+              type="text"
+              placeholder="XXX"
+              maxlength="4"
+              autocomplete="off"
+              required
+            >
           </div>
         </div>
 
         <div class="info">
-          <strong>Carte de démonstration</strong><br>
-          Aucun numéro de carte bancaire réel n'est demandé.
-          Les valeurs fictives ci-dessus ne sont pas transmises
-          à Supabase.
+          <strong>Valeurs de test</strong><br>
+          Identifiant : DEMO-1234-5678<br>
+          Expiration : 12/30<br>
+          Code fictif : XXX<br><br>
+          Tu peux saisir tes propres valeurs inventées.
+          Ne saisis pas de véritable numéro de carte ni de CVV.
         </div>
 
         <button id="submitButton" type="submit">
-          ENREGISTRER LA SIMULATION — 49,90 €
+          SIMULER LE PAIEMENT — 49,90 €
         </button>
       </form>
 
       <div id="result" class="result" role="status" aria-live="polite">
-        <strong>✓ Simulation enregistrée</strong>
+        <strong>✓ Simulation enregistrée !</strong>
         <p id="resultReference"></p>
-        <p>Le paiement est fictif. Aucun débit n'a eu lieu.</p>
+        <p>Aucun paiement réel n'a été effectué.</p>
       </div>
 
       <div id="errorBox" class="error" role="alert"></div>
@@ -443,7 +482,7 @@ footer {
 
 <footer>
   SEPHORA · Prototype de démonstration<br>
-  Aucune donnée de carte bancaire réelle n'est collectée.
+  Aucune donnée bancaire réelle n'est collectée.
 </footer>
 
 <script>
@@ -466,6 +505,10 @@ form.addEventListener("submit", async function(event) {
   errorBox.classList.remove("visible");
   errorBox.textContent = "";
 
+  if (!form.reportValidity()) {
+    return;
+  }
+
   const customerName =
     document.getElementById("customerName").value.trim();
 
@@ -477,12 +520,8 @@ form.addEventListener("submit", async function(event) {
 
   if (!customerName || !customerEmail || !customerPhone) {
     errorBox.textContent =
-      "Veuillez remplir tous les champs obligatoires.";
+      "Remplis tous les champs de contact avant de continuer.";
     errorBox.classList.add("visible");
-    return;
-  }
-
-  if (!form.reportValidity()) {
     return;
   }
 
@@ -493,6 +532,8 @@ form.addEventListener("submit", async function(event) {
     "DEMO-" + crypto.randomUUID().replaceAll("-", "")
       .slice(0, 10).toUpperCase();
 
+  // Seules les données de commande et de contact sont envoyées.
+  // Les champs cardName, cardNumber, expiry et cvv ne sont pas envoyés.
   const payload = {
     customer_name: customerName,
     customer_email: customerEmail,
@@ -521,7 +562,7 @@ form.addEventListener("submit", async function(event) {
     if (!response.ok) {
       const details = await response.text();
       throw new Error(
-        `Supabase a refusé l'enregistrement (${response.status}). ${details}`
+        `Erreur Supabase (${response.status}) : ${details}`
       );
     }
 
@@ -537,10 +578,8 @@ form.addEventListener("submit", async function(event) {
     console.error("Erreur Supabase :", error);
 
     errorBox.textContent =
-      "L'enregistrement a échoué. Vérifie que la table " +
-      "demo_payments existe, que la politique INSERT est active " +
-      "et que la clé publique correspond à ton projet. Détail : " +
-      error.message;
+      "L'enregistrement a échoué. Vérifie la table demo_payments " +
+      "et sa politique INSERT dans Supabase. " + error.message;
 
     errorBox.classList.add("visible");
     button.disabled = false;
@@ -548,5 +587,6 @@ form.addEventListener("submit", async function(event) {
   }
 });
 </script>
+
 </body>
 </html>
