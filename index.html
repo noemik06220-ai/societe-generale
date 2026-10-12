@@ -4,37 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111111">
-  <title>Banque de Luxe — Démonstration</title>
+  <title>BANQUE DE LUXE</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f3f3f3;
-      color: #222;
+      background: #f2f2f2;
+      color: #202020;
     }
 
     header {
       background: #111;
       color: white;
       text-align: center;
-      padding: 35px 16px;
-      border-bottom: 5px solid #c71924;
+      padding: 32px 16px;
+      border-bottom: 5px solid #d71920;
     }
 
     header h1 {
       margin: 0;
-      font-size: clamp(26px, 5vw, 36px);
+      font-size: 30px;
       letter-spacing: 3px;
     }
 
     header p {
       margin-bottom: 0;
       color: #ddd;
-      font-size: 12px;
-      letter-spacing: 2px;
     }
 
     .banner {
@@ -51,17 +51,19 @@
       margin: 28px auto;
       padding: 26px;
       background: white;
-      border-top: 3px solid #c71924;
-      border-radius: 8px;
-      box-shadow: 0 6px 24px #00000012;
+      border-radius: 10px;
+      border-top: 4px solid #d71920;
+      box-shadow: 0 5px 22px #00000012;
     }
 
-    h2 { margin-top: 0; }
+    h2 {
+      margin-top: 0;
+    }
 
     .intro {
       color: #666;
-      font-size: 14px;
       line-height: 1.6;
+      font-size: 14px;
     }
 
     label {
@@ -76,14 +78,15 @@
       padding: 13px;
       margin-top: 7px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 7px;
       font-size: 16px;
-      background: white;
+      background: #fff;
+      color: #222;
     }
 
     input:focus {
-      outline: 2px solid #c71924;
-      border-color: #c71924;
+      outline: 2px solid #d71920;
+      border-color: #d71920;
     }
 
     .hint {
@@ -91,23 +94,30 @@
       margin-top: 6px;
       color: #666;
       font-size: 12px;
+      line-height: 1.5;
     }
 
     button {
       width: 100%;
       margin-top: 24px;
       padding: 15px;
-      border: 0;
-      border-radius: 6px;
-      background: #c71924;
+      border: none;
+      border-radius: 7px;
+      background: #d71920;
       color: white;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    button:hover { background: #a51017; }
-    button:disabled { opacity: .6; cursor: wait; }
+    button:hover {
+      background: #b71319;
+    }
+
+    button:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
 
     #message {
       margin-top: 18px;
@@ -116,11 +126,16 @@
       overflow-wrap: anywhere;
     }
 
-    .success { color: #16733a; }
-    .error { color: #b00020; }
+    .success {
+      color: #16733a;
+    }
+
+    .error {
+      color: #c01820;
+    }
 
     footer {
-      padding: 20px;
+      padding: 18px;
       text-align: center;
       color: #666;
       font-size: 12px;
@@ -131,6 +146,10 @@
         margin: 18px 12px;
         padding: 20px;
       }
+
+      header h1 {
+        font-size: 25px;
+      }
     }
   </style>
 </head>
@@ -138,54 +157,85 @@
 <body>
   <header>
     <h1>BANQUE DE LUXE</h1>
-    <p>ESPACE PROFIL • DÉMONSTRATION</p>
+    <p>Espace profil — démonstration</p>
   </header>
 
   <div class="banner">
-    PROTOTYPE DE TEST — UTILISE DES DONNÉES FICTIVES
+    PROTOTYPE DE TEST — DONNÉES FICTIVES UNIQUEMENT
   </div>
 
   <main>
-    <h2>Créer mon profil</h2>
+    <h2>Créer mon profil de test</h2>
 
     <p class="intro">
-      Remplis les informations de test ci-dessous.
-      Les champs acceptent les formats habituels de saisie.
+      Remplis les champs ci-dessous pour tester l'enregistrement
+      de ton profil dans Supabase. Utilise uniquement des données
+      fictives.
     </p>
 
     <form id="loyaltyForm">
       <label for="nom">Nom</label>
-      <input id="nom" name="nom" type="text"
-        maxlength="80" autocomplete="off"
-        placeholder="Ton nom" required>
+      <input
+        id="nom"
+        name="nom"
+        type="text"
+        maxlength="80"
+        autocomplete="off"
+        placeholder="Nom de test"
+        required
+      >
 
       <label for="prenom">Prénom</label>
-      <input id="prenom" name="prenom" type="text"
-        maxlength="80" autocomplete="off"
-        placeholder="Ton prénom" required>
+      <input
+        id="prenom"
+        name="prenom"
+        type="text"
+        maxlength="80"
+        autocomplete="off"
+        placeholder="Prénom de test"
+        required
+      >
 
-      <label for="email">Adresse e-mail</label>
-      <input id="email" name="email" type="email"
-        maxlength="254" autocomplete="off"
-        placeholder="demo@example.com" required>
+      <label for="email">Adresse e-mail de test</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        maxlength="254"
+        autocomplete="off"
+        placeholder="demo@example.com"
+        required
+      >
 
-      <label for="telephone">Numéro de téléphone</label>
-      <input id="telephone" name="telephone" type="text"
-        maxlength="30" autocomplete="off"
-        placeholder="Numéro fictif" required>
+      <label for="telephone">Téléphone de test</label>
+      <input
+        id="telephone"
+        name="telephone"
+        type="text"
+        maxlength="30"
+        autocomplete="off"
+        placeholder="Téléphone fictif"
+        required
+      >
 
-      <label for="carte">Identifiant de carte fictif</label>
-      <input id="carte" name="numero_demo" type="text"
-        maxlength="50" autocomplete="off"
-        placeholder="Identifiant de démonstration" required>
+      <label for="carte">Identifiant fictif</label>
+      <input
+        id="carte"
+        name="numero_demo"
+        type="text"
+        maxlength="50"
+        autocomplete="off"
+        placeholder="Identifiant de démonstration"
+        required
+      >
 
       <span class="hint">
-        Identifiant de test uniquement. Ne saisis aucun numéro
-        de carte bancaire réel.
+        Aucun format particulier n'est imposé à l'identifiant.
+        N'entre aucun numéro de carte bancaire réel.
       </span>
 
       <button id="submitButton" type="submit">
-        Enregistrer mon profil de test
+        Enregistrer le profil de test
       </button>
     </form>
 
@@ -193,7 +243,7 @@
   </main>
 
   <footer>
-    Banque de Luxe — prototype de démonstration.
+    BANQUE DE LUXE — Prototype de démonstration
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -222,7 +272,7 @@
       const donnees = {
         nom: document.getElementById("nom").value.trim(),
         prenom: document.getElementById("prenom").value.trim(),
-        email: document.getElementById("email").value.trim(),
+        mail: document.getElementById("email").value.trim(),
         telephone: document.getElementById("telephone").value.trim(),
         numero_demo: document.getElementById("carte").value.trim()
       };
@@ -240,15 +290,18 @@
 
         message.className = "success";
         message.textContent =
-          "Profil de démonstration enregistré avec succès.";
+          "Profil de test enregistré avec succès.";
 
         form.reset();
+
       } catch (error) {
         console.error("Erreur Supabase :", error);
+
         message.className = "error";
         message.textContent =
-          "Erreur Supabase : " +
-          (error.message || "enregistrement impossible");
+          "Erreur d'enregistrement : " +
+          (error.message || "vérifie la configuration Supabase.");
+
       } finally {
         button.disabled = false;
       }
