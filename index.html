@@ -4,135 +4,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Banque Simulée — Jeu de gestion</title>
+  <meta name="theme-color" content="#e31b35">
+  <title>Espace Client</title>
+
   <style>
     * { box-sizing: border-box; }
+
+    :root {
+      --red: #e31b35;
+      --red-dark: #bd142b;
+      --text: #252525;
+      --muted: #727784;
+      --border: #e7e8ed;
+      --background: #f5f6f8;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f1f5f9;
-      color: #172033;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
     }
+
     header {
-      background: #142b4a;
+      background: white;
+      padding: 20px 16px;
+      border-bottom: 4px solid var(--red);
+    }
+
+    .header-inner {
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 43px;
+      height: 43px;
+      background: var(--red);
       color: white;
-      padding: 22px 16px;
-      text-align: center;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      font-weight: bold;
     }
-    header h1 { margin: 0 0 8px; }
-    .notice {
-      background: #fff4d6;
-      color: #704d00;
-      padding: 12px;
-      text-align: center;
+
+    header h1 {
+      margin: 0;
+      font-size: 23px;
+      color: var(--red);
+    }
+
+    header p {
+      margin: 5px 0 0;
       font-size: 13px;
+      color: var(--muted);
     }
+
+    .notice {
+      text-align: center;
+      padding: 9px 12px;
+      font-size: 12px;
+      background: #fff0f2;
+      color: #8f1428;
+    }
+
     main {
-      width: min(92%, 460px);
+      width: min(94%, 1000px);
       margin: 28px auto;
     }
+
     .card {
       background: white;
-      padding: 22px;
+      border: 1px solid var(--border);
       border-radius: 14px;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 18px #0000000c;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px #20212408;
     }
-    h2 { margin-top: 0; }
+
+    h2 {
+      font-size: 21px;
+      margin: 0 0 10px;
+    }
+
+    .muted {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
     label {
       display: block;
-      margin: 14px 0 6px;
+      margin: 16px 0 7px;
       font-size: 14px;
+      font-weight: 600;
     }
+
     input {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #cbd5e1;
+      padding: 13px;
+      border: 1px solid #d6d9df;
       border-radius: 8px;
       font-size: 16px;
+      background: white;
     }
+
+    input:focus {
+      outline: 2px solid #e31b3530;
+      border-color: var(--red);
+    }
+
     button {
       width: 100%;
-      border: 0;
-      padding: 13px;
+      padding: 14px;
       margin-top: 12px;
+      border: none;
       border-radius: 8px;
-      background: #1764c0;
+      background: var(--red);
       color: white;
       font-weight: bold;
       font-size: 15px;
       cursor: pointer;
     }
-    button.secondary { background: #334155; }
+
+    button:hover {
+      background: var(--red-dark);
+    }
+
+    button.secondary {
+      background: white;
+      color: var(--red);
+      border: 1px solid var(--red);
+    }
+
+    .hidden { display: none !important; }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .account-label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .balance {
+      font-size: clamp(28px, 6vw, 38px);
+      font-weight: bold;
+      color: var(--red);
+      margin: 10px 0;
+    }
+
+    .pill {
+      display: inline-block;
+      border-radius: 20px;
+      padding: 7px 10px;
+      font-size: 12px;
+      color: #8f1428;
+      background: #fff0f2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      background: white;
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-top: 8px;
+      font-size: 17px;
+    }
+
     #status {
       white-space: pre-wrap;
-      line-height: 1.5;
       overflow-wrap: anywhere;
+      line-height: 1.5;
+      font-size: 14px;
     }
-    .hidden { display: none; }
-    .balance {
-      font-size: 30px;
-      font-weight: bold;
-      color: #1764c0;
-    }
+
     footer {
       text-align: center;
-      padding: 24px;
-      color: #64748b;
-      font-size: 13px;
+      padding: 25px 16px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+      .card { padding: 19px; }
+      header h1 { font-size: 20px; }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1>Banque Simulée</h1>
-    <div>Jeu de gestion financière virtuelle</div>
+    <div class="header-inner">
+      <div class="logo" aria-hidden="true">E</div>
+      <div>
+        <h1>Espace Client</h1>
+        <p>Votre espace personnel</p>
+      </div>
+    </div>
   </header>
 
   <div class="notice">
-    SIMULATION FICTIVE — aucun compte bancaire réel,
-    aucun dépôt réel et aucun paiement réel.
+    Espace de jeu — soldes et opération.
   </div>
 
   <main>
     <section class="card" id="authCard">
       <h2>Bienvenue</h2>
-      <p>Crée ton compte de jeu ou connecte-toi pour continuer.</p>
+      <p class="muted">
+        Connectez-vous pour accéder à votre espace personnel,
+        ou créez un compte pour commencer.
+      </p>
 
-      <label for="email">Adresse e-mail</label>
-      <input id="email" type="email" autocomplete="email"
-             placeholder="exemple@email.com">
+      <form id="authForm">
+        <label for="email">Adresse e-mail</label>
+        <input
+          id="email"
+          type="email"
+          autocomplete="email"
+          placeholder="Votre adresse e-mail"
+          required
+        >
 
-      <label for="password">Mot de passe</label>
-      <input id="password" type="password"
-             autocomplete="current-password"
-             placeholder="Au moins 6 caractères">
+        <label for="password">Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          minlength="6"
+          placeholder="6 caractères minimum"
+          required
+        >
 
-      <button id="signupBtn">Créer mon compte</button>
-      <button id="loginBtn" class="secondary">Se connecter</button>
+        <button type="button" id="signupBtn">
+          Créer mon compte
+        </button>
+
+        <button type="submit" id="loginBtn" class="secondary">
+          Se connecter
+        </button>
+      </form>
     </section>
 
-    <section class="card hidden" id="accountCard">
-      <h2>Mon espace de jeu</h2>
-      <p>Compte connecté :</p>
-      <p id="accountEmail"></p>
+    <section class="hidden" id="accountArea">
+      <div class="card">
+        <div class="dashboard-top">
+          <div>
+            <div class="account-label">ESPACE PERSONNEL</div>
+            <h2>Bonjour !</h2>
+            <p class="muted" id="accountEmail"></p>
+          </div>
+          <span class="pill">Compte de jeu</span>
+        </div>
 
-      <p>Solde virtuel de démonstration :</p>
-      <div class="balance">1 000,00 € virtuels</div>
-      <p>Ce solde est fictif et n'est pas de l'argent réel.</p>
+        <div class="account-label">Solde virtuel</div>
+        <div class="balance">1 000,00 €</div>
+        <p class="muted">
+          Solde de départ affiché à titre de démonstration.
+        </p>
+      </div>
 
-      <button id="logoutBtn" class="secondary">Se déconnecter</button>
+      <div class="grid">
+        <div class="mini-card">
+          <span class="muted">Mes cartes</span>
+          <strong>Cartes virtuelles</strong>
+          <p class="muted">Fonction disponible prochainement.</p>
+        </div>
+
+        <div class="mini-card">
+          <span class="muted">Mes opérations</span>
+          <strong>Historique</strong>
+          <p class="muted">Aucune opération enregistrée.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Opérations</h2>
+        <p class="muted">
+          Les virements et l'historique pourront être ajoutés
+          avec une sauvegarde sécurisée dans Supabase.
+        </p>
+        <button type="button" id="logoutBtn" class="secondary">
+          Se déconnecter
+        </button>
+      </div>
     </section>
 
     <section class="card">
-      <h2>État du service</h2>
-      <p id="status">Connexion au service en cours…</p>
+      <h2>Informations</h2>
+      <p id="status" class="muted" aria-live="polite">
+        Connexion au service en cours…
+      </p>
     </section>
   </main>
 
   <footer>
-    Banque Simulée — projet de jeu indépendant.
-    Sans affiliation à une banque réelle.
+    Espace Client · Jeu de gestion indépendant
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -145,8 +332,9 @@
 
     const statusBox = document.getElementById("status");
     const authCard = document.getElementById("authCard");
-    const accountCard = document.getElementById("accountCard");
+    const accountArea = document.getElementById("accountArea");
     const accountEmail = document.getElementById("accountEmail");
+    const authForm = document.getElementById("authForm");
 
     let client = null;
 
@@ -157,18 +345,21 @@
     function showUser(user) {
       if (user) {
         authCard.classList.add("hidden");
-        accountCard.classList.remove("hidden");
-        accountEmail.textContent = user.email || "Utilisateur connecté";
+        accountArea.classList.remove("hidden");
+        accountEmail.textContent =
+          user.email || "Utilisateur connecté";
       } else {
         authCard.classList.remove("hidden");
-        accountCard.classList.add("hidden");
+        accountArea.classList.add("hidden");
         accountEmail.textContent = "";
       }
     }
 
     async function init() {
       if (!window.supabase) {
-        showStatus("Impossible de charger Supabase. Vérifie ta connexion Internet.");
+        showStatus(
+          "Le service n'a pas pu se charger. Vérifiez votre connexion Internet."
+        );
         return;
       }
 
@@ -180,7 +371,7 @@
       const { data, error } = await client.auth.getSession();
 
       if (error) {
-        showStatus("Erreur : " + error.message);
+        showStatus("Erreur de connexion : " + error.message);
         return;
       }
 
@@ -192,66 +383,100 @@
       });
     }
 
-    document.getElementById("signupBtn").addEventListener("click", async () => {
-      if (!client) return showStatus("Le service n'est pas encore prêt.");
+    document.getElementById("signupBtn").addEventListener(
+      "click",
+      async () => {
+        if (!client) {
+          showStatus("Le service n'est pas encore prêt.");
+          return;
+        }
 
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
+        const email =
+          document.getElementById("email").value.trim();
+        const password =
+          document.getElementById("password").value;
 
-      if (!email || password.length < 6) {
-        return showStatus("Saisis une adresse e-mail et un mot de passe d'au moins 6 caractères.");
+        if (!email || password.length < 6) {
+          showStatus(
+            "Saisissez une adresse e-mail et un mot de passe d'au moins 6 caractères."
+          );
+          return;
+        }
+
+        showStatus("Création du compte…");
+
+        const { data, error } = await client.auth.signUp({
+          email,
+          password
+        });
+
+        if (error) {
+          showStatus("Inscription impossible : " + error.message);
+          return;
+        }
+
+        if (data.session) {
+          showUser(data.session.user);
+          showStatus("Compte créé avec succès.");
+        } else {
+          showStatus(
+            "Inscription enregistrée. Consultez vos e-mails pour confirmer votre compte, puis connectez-vous."
+          );
+        }
+      }
+    );
+
+    authForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      if (!client) {
+        showStatus("Le service n'est pas encore prêt.");
+        return;
       }
 
-      showStatus("Création du compte…");
-
-      const { data, error } = await client.auth.signUp({
-        email,
-        password
-      });
-
-      if (error) return showStatus("Inscription impossible : " + error.message);
-
-      if (data.session) {
-        showUser(data.session.user);
-        showStatus("Compte créé avec succès.");
-      } else {
-        showStatus("Inscription enregistrée. Consulte tes e-mails pour confirmer ton compte, puis connecte-toi.");
-      }
-    });
-
-    document.getElementById("loginBtn").addEventListener("click", async () => {
-      if (!client) return showStatus("Le service n'est pas encore prêt.");
-
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
+      const email =
+        document.getElementById("email").value.trim();
+      const password =
+        document.getElementById("password").value;
 
       if (!email || !password) {
-        return showStatus("Saisis ton adresse e-mail et ton mot de passe.");
+        showStatus("Saisissez votre adresse e-mail et votre mot de passe.");
+        return;
       }
 
-      showStatus("Connexion…");
+      showStatus("Connexion en cours…");
 
-      const { data, error } = await client.auth.signInWithPassword({
-        email,
-        password
-      });
+      const { data, error } =
+        await client.auth.signInWithPassword({
+          email,
+          password
+        });
 
-      if (error) return showStatus("Connexion impossible : " + error.message);
+      if (error) {
+        showStatus("Connexion impossible : " + error.message);
+        return;
+      }
 
       showUser(data.user);
       showStatus("Connexion réussie.");
     });
 
-    document.getElementById("logoutBtn").addEventListener("click", async () => {
-      if (!client) return;
+    document.getElementById("logoutBtn").addEventListener(
+      "click",
+      async () => {
+        if (!client) return;
 
-      const { error } = await client.auth.signOut();
+        const { error } = await client.auth.signOut();
 
-      if (error) return showStatus("Erreur de déconnexion : " + error.message);
+        if (error) {
+          showStatus("Erreur de déconnexion : " + error.message);
+          return;
+        }
 
-      showUser(null);
-      showStatus("Tu es déconnecté.");
-    });
+        showUser(null);
+        showStatus("Vous êtes déconnecté.");
+      }
+    );
 
     init();
   </script>
