@@ -1,77 +1,259 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nova Démo — Banque fictive</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f1f5f9;
-  color: #172033;
-}
-header {
-  background: #102b50;
-  color: white;
-  padding: 24px 18px;
-}
-header h1 { margin: 0; }
-header p { margin-bottom: 0; }
-main { padding: 18px; max-width: 600px; margin: auto; }
-.demo {
-  background: #fff3cd;
-  color: #725400;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: bold;
-}
-.balance {
-  background: #1557a0;
-  color: white;
-  padding: 24px;
-  border-radius: 16px;
-  margin: 18px 0;
-}
-.amount { font-size: 32px; font-weight: bold; }
-.card {
-  background: white;
-  padding: 18px;
-  border-radius: 14px;
-  margin: 14px 0;
-  box-shadow: 0 2px 8px #0000000c;
-}
-.transaction {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 13px 0;
-  border-bottom: 1px solid #e5e7eb;
-}
-form { display: grid; gap: 12px; }
-input, button {
-  box-sizing: border-box;
-  width: 100%;
-  padding: 13px;
-  border-radius: 8px;
-  font-size: 16px;
-}
-input { border: 1px solid #cbd5e1; }
-button {
-  background: #1557a0;
-  color: white;
-  border: 0;
-  font-weight: bold;
-}
-footer { text-align: center; padding: 24px; color: #64748b; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banque Simulée — Jeu de gestion</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #172033;
+    }
+    header {
+      background: #142b4a;
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 8px; }
+    .notice {
+      background: #fff4d6;
+      color: #704d00;
+      padding: 12px;
+      text-align: center;
+      font-size: 13px;
+    }
+    main {
+      width: min(92%, 460px);
+      margin: 28px auto;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 18px #0000000c;
+    }
+    h2 { margin-top: 0; }
+    label {
+      display: block;
+      margin: 14px 0 6px;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      border: 0;
+      padding: 13px;
+      margin-top: 12px;
+      border-radius: 8px;
+      background: #1764c0;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button.secondary { background: #334155; }
+    #status {
+      white-space: pre-wrap;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+    .hidden { display: none; }
+    .balance {
+      font-size: 30px;
+      font-weight: bold;
+      color: #1764c0;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+      font-size: 13px;
+    }
+  </style>
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  window.supabaseClient = window.supabase.createClient(
-    "https://jjtwodgevtkltqovargh.supabase.co",
-    "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7"
-  );
-  console.log("Supabase est prêt !");
-</script>
+  <header>
+    <h1>Banque Simulée</h1>
+    <div>Jeu de gestion financière virtuelle</div>
+  </header>
+
+  <div class="notice">
+    SIMULATION FICTIVE — aucun compte bancaire réel,
+    aucun dépôt réel et aucun paiement réel.
+  </div>
+
+  <main>
+    <section class="card" id="authCard">
+      <h2>Bienvenue</h2>
+      <p>Crée ton compte de jeu ou connecte-toi pour continuer.</p>
+
+      <label for="email">Adresse e-mail</label>
+      <input id="email" type="email" autocomplete="email"
+             placeholder="exemple@email.com">
+
+      <label for="password">Mot de passe</label>
+      <input id="password" type="password"
+             autocomplete="current-password"
+             placeholder="Au moins 6 caractères">
+
+      <button id="signupBtn">Créer mon compte</button>
+      <button id="loginBtn" class="secondary">Se connecter</button>
+    </section>
+
+    <section class="card hidden" id="accountCard">
+      <h2>Mon espace de jeu</h2>
+      <p>Compte connecté :</p>
+      <p id="accountEmail"></p>
+
+      <p>Solde virtuel de démonstration :</p>
+      <div class="balance">1 000,00 € virtuels</div>
+      <p>Ce solde est fictif et n'est pas de l'argent réel.</p>
+
+      <button id="logoutBtn" class="secondary">Se déconnecter</button>
+    </section>
+
+    <section class="card">
+      <h2>État du service</h2>
+      <p id="status">Connexion au service en cours…</p>
+    </section>
+  </main>
+
+  <footer>
+    Banque Simulée — projet de jeu indépendant.
+    Sans affiliation à une banque réelle.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL =
+      "https://jjtwodgevtkltqovargh.supabase.co";
+
+    const SUPABASE_KEY =
+      "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
+
+    const statusBox = document.getElementById("status");
+    const authCard = document.getElementById("authCard");
+    const accountCard = document.getElementById("accountCard");
+    const accountEmail = document.getElementById("accountEmail");
+
+    let client = null;
+
+    function showStatus(message) {
+      statusBox.textContent = message;
+    }
+
+    function showUser(user) {
+      if (user) {
+        authCard.classList.add("hidden");
+        accountCard.classList.remove("hidden");
+        accountEmail.textContent = user.email || "Utilisateur connecté";
+      } else {
+        authCard.classList.remove("hidden");
+        accountCard.classList.add("hidden");
+        accountEmail.textContent = "";
+      }
+    }
+
+    async function init() {
+      if (!window.supabase) {
+        showStatus("Impossible de charger Supabase. Vérifie ta connexion Internet.");
+        return;
+      }
+
+      client = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+
+      const { data, error } = await client.auth.getSession();
+
+      if (error) {
+        showStatus("Erreur : " + error.message);
+        return;
+      }
+
+      showUser(data.session ? data.session.user : null);
+      showStatus("Service prêt.");
+
+      client.auth.onAuthStateChange((_event, session) => {
+        showUser(session ? session.user : null);
+      });
+    }
+
+    document.getElementById("signupBtn").addEventListener("click", async () => {
+      if (!client) return showStatus("Le service n'est pas encore prêt.");
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || password.length < 6) {
+        return showStatus("Saisis une adresse e-mail et un mot de passe d'au moins 6 caractères.");
+      }
+
+      showStatus("Création du compte…");
+
+      const { data, error } = await client.auth.signUp({
+        email,
+        password
+      });
+
+      if (error) return showStatus("Inscription impossible : " + error.message);
+
+      if (data.session) {
+        showUser(data.session.user);
+        showStatus("Compte créé avec succès.");
+      } else {
+        showStatus("Inscription enregistrée. Consulte tes e-mails pour confirmer ton compte, puis connecte-toi.");
+      }
+    });
+
+    document.getElementById("loginBtn").addEventListener("click", async () => {
+      if (!client) return showStatus("Le service n'est pas encore prêt.");
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        return showStatus("Saisis ton adresse e-mail et ton mot de passe.");
+      }
+
+      showStatus("Connexion…");
+
+      const { data, error } = await client.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) return showStatus("Connexion impossible : " + error.message);
+
+      showUser(data.user);
+      showStatus("Connexion réussie.");
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      if (!client) return;
+
+      const { error } = await client.auth.signOut();
+
+      if (error) return showStatus("Erreur de déconnexion : " + error.message);
+
+      showUser(null);
+      showStatus("Tu es déconnecté.");
+    });
+
+    init();
+  </script>
+</body>
+</html>
