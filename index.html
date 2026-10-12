@@ -1,416 +1,552 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111111">
-  <title>SEPHORA — Beauté & Promotions</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEPHORA — Paiement démo</title>
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+:root {
+  --gold: #d6b46a;
+  --gold-light: #f4dfaa;
+  --black: #090909;
+  --panel: #151515;
+  --muted: #aaa;
+}
 
-    :root {
-      --gold: #d4af67;
-      --gold-light: #f5e4b7;
-      --black: #111111;
-      --white: #ffffff;
-      --muted: #777777;
-    }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: var(--black);
-      background: #f7f4ed;
-    }
+body {
+  background: var(--black);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
 
-    header {
-      background: var(--black);
-      color: var(--white);
-      text-align: center;
-      padding: 28px 16px 24px;
-      border-bottom: 3px solid var(--gold);
-    }
+header {
+  text-align: center;
+  padding: 27px 15px;
+  border-bottom: 1px solid #3c3020;
+}
 
-    .brand {
-      margin: 0;
-      font-size: clamp(30px, 6vw, 48px);
-      letter-spacing: 7px;
-      font-weight: 900;
-    }
+.logo {
+  font-size: 43px;
+  font-weight: 900;
+  letter-spacing: 8px;
+}
 
-    .brand-subtitle {
-      margin: 10px 0 0;
-      color: var(--gold-light);
-      font-size: 11px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
+.logo span {
+  color: var(--gold);
+}
 
-    .promo-banner {
-      background: #f3e5bd;
-      color: #473516;
-      text-align: center;
-      padding: 12px 16px;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+.tagline {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-top: 10px;
+}
 
-    .hero {
-      text-align: center;
-      padding: 54px 20px 48px;
-      color: white;
-      background:
-        radial-gradient(ellipse at top, #514329 0%, transparent 55%),
-        linear-gradient(135deg, #171512, #302719 55%, #111111);
-    }
+.notice {
+  text-align: center;
+  padding: 13px;
+  background: #211b10;
+  color: var(--gold-light);
+  font-size: 13px;
+  line-height: 1.6;
+}
 
-    .eyebrow {
-      color: var(--gold-light);
-      text-transform: uppercase;
-      font-size: 11px;
-      letter-spacing: 4px;
-    }
+main {
+  width: min(1050px, 92%);
+  margin: 38px auto;
+}
 
-    .hero h2 {
-      max-width: 700px;
-      margin: 18px auto;
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: clamp(34px, 7vw, 62px);
-      line-height: 1.1;
-    }
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-    .hero h2 span {
-      color: var(--gold-light);
-      font-style: italic;
-    }
+.intro h1 {
+  font-size: clamp(25px, 5vw, 36px);
+  margin-bottom: 12px;
+}
 
-    .hero p {
-      max-width: 480px;
-      margin: 0 auto;
-      color: #e2ddd2;
-      font-size: 15px;
-      line-height: 1.8;
-    }
+.intro p {
+  color: var(--muted);
+  line-height: 1.7;
+}
 
-    .promo-tag {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 11px 19px;
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
+.layout {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 25px;
+  align-items: start;
+}
 
-    main {
-      width: min(100% - 28px, 560px);
-      margin: 32px auto;
-      padding: 30px;
-      background: white;
-      border: 1px solid #e8dfcc;
-      border-top: 4px solid var(--gold);
-      border-radius: 4px;
-      box-shadow: 0 12px 35px #33250d12;
-    }
+.panel {
+  padding: 25px;
+  border: 1px solid #403423;
+  background: var(--panel);
+  border-radius: 12px;
+}
 
-    .form-kicker {
-      margin: 0 0 10px;
-      color: #92743c;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 10px;
-      font-weight: bold;
-    }
+.panel h2 {
+  color: var(--gold-light);
+  font-size: 19px;
+  margin-bottom: 23px;
+}
 
-    main h2 {
-      margin: 0;
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 29px;
-    }
+.product {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 0;
+  border-bottom: 1px solid #35302a;
+}
 
-    .intro {
-      margin: 13px 0 22px;
-      color: #666;
-      font-size: 14px;
-      line-height: 1.7;
-    }
+.product-icon {
+  width: 65px;
+  height: 70px;
+  border: 1px solid #5a472b;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  color: var(--gold);
+}
 
-    label {
-      display: block;
-      margin-top: 17px;
-      font-size: 13px;
-      font-weight: bold;
-    }
+.product-info {
+  flex: 1;
+}
 
-    input {
-      width: 100%;
-      margin-top: 8px;
-      padding: 14px;
-      border: 1px solid #d8d2c5;
-      border-radius: 3px;
-      background: #fff;
-      color: #222;
-      font: inherit;
-      font-size: 15px;
-    }
+.product-info h3 {
+  font-size: 15px;
+  margin-bottom: 7px;
+}
 
-    input:focus {
-      outline: 2px solid var(--gold);
-      border-color: var(--gold);
-    }
+.product-info p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
 
-    .hint {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-    }
+.price {
+  color: var(--gold-light);
+  white-space: nowrap;
+  font-weight: bold;
+}
 
-    button {
-      width: 100%;
-      margin-top: 25px;
-      padding: 16px;
-      border: 1px solid #9d7b39;
-      border-radius: 3px;
-      background: linear-gradient(110deg, #b28b43, #f0d99b, #b28b43);
-      color: #17130b;
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: filter .2s, transform .2s;
-    }
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  font-size: 14px;
+  color: #ccc;
+}
 
-    button:hover { filter: brightness(1.06); }
-    button:active { transform: scale(.99); }
+.total {
+  border-top: 1px solid #57452b;
+  margin-top: 8px;
+  padding-top: 20px;
+  font-size: 19px;
+  color: white;
+  font-weight: bold;
+}
 
-    button:disabled {
-      opacity: .6;
-      cursor: wait;
-    }
+.total strong {
+  color: var(--gold-light);
+}
 
-    #message {
-      margin-top: 18px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.6;
-      overflow-wrap: anywhere;
-    }
+.field {
+  margin-bottom: 18px;
+}
 
-    .success { color: #176b3a; }
-    .error { color: #b51c25; }
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #e4ddcf;
+}
 
-    .notice {
-      margin-top: 20px;
-      padding: 13px;
-      background: #f7f4ed;
-      border-left: 3px solid var(--gold);
-      color: #5f5747;
-      font-size: 12px;
-      line-height: 1.7;
-    }
+input, select {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  background: #090909;
+  border: 1px solid #51432d;
+  border-radius: 7px;
+  color: white;
+  font-size: 15px;
+}
 
-    footer {
-      padding: 25px 16px;
-      background: #111;
-      color: #c8c1b4;
-      text-align: center;
-      font-size: 11px;
-      line-height: 1.8;
-    }
+input:focus, select:focus {
+  outline: 1px solid var(--gold);
+}
 
-    footer strong {
-      color: var(--gold-light);
-      letter-spacing: 2px;
-    }
+input[readonly] {
+  color: var(--gold-light);
+  background: #10100e;
+}
 
-    @media (max-width: 560px) {
-      main {
-        padding: 22px 18px;
-        margin: 22px auto;
-      }
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
 
-      .hero { padding: 42px 18px; }
-      .brand { letter-spacing: 5px; }
-    }
-  </style>
+.info {
+  padding: 13px;
+  margin-bottom: 20px;
+  border: 1px dashed #675331;
+  border-radius: 8px;
+  color: #d4c6a7;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.info strong {
+  color: var(--gold-light);
+}
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-radius: 7px;
+  background: linear-gradient(110deg, #b18a42, #f0d69a, #b18a42);
+  color: #111;
+  font-weight: bold;
+  font-size: 13px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.result {
+  display: none;
+  margin-top: 20px;
+  padding: 18px;
+  border: 1px solid #657b53;
+  border-radius: 8px;
+  background: #141b12;
+  color: #d9efc8;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.result.visible {
+  display: block;
+}
+
+.error {
+  display: none;
+  color: #ffb3b3;
+  background: #281313;
+  border: 1px solid #693333;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 16px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.error.visible {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 25px 15px 35px;
+  color: #888;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+@media (max-width: 760px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  main {
+    margin: 28px auto;
+  }
+}
+
+@media (max-width: 380px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .logo {
+    font-size: 34px;
+    letter-spacing: 5px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <header>
-    <h1 class="brand">SEPHORA</h1>
-    <p class="brand-subtitle">Beauté · Élégance · Inspiration</p>
-  </header>
+<header>
+  <div class="logo">SEPH<span>O</span>RA</div>
+  <div class="tagline">BEAUTY · LUXE · ÉLÉGANCE</div>
+</header>
 
-  <div class="promo-banner">
-    DÉCOUVREZ NOTRE UNIVERS BEAUTÉ
-  </div>
+<div class="notice">
+  <strong>MODE DÉMONSTRATION</strong><br>
+  Aucun débit réel. Les informations de carte sont fictives.
+</div>
 
-  <section class="hero">
-    <div class="eyebrow">L'univers de la beauté</div>
-    <h2>Un éclat <span>qui vous ressemble</span></h2>
-    <p>
-      Découvrez une sélection inspirée de l'univers des
-      cosmétiques, dans une ambiance élégante et dorée.
-    </p>
-    <div class="promo-tag">Offres & nouveautés</div>
+<main>
+  <section class="intro">
+    <h1>Finaliser ma commande</h1>
+    <p>Complétez les informations de démonstration.<br>
+    La simulation sera enregistrée dans Supabase.</p>
   </section>
 
-  <main>
-    <p class="form-kicker">Espace personnel</p>
-    <h2>Créer mon profil</h2>
+  <div class="layout">
+    <section class="panel">
+      <h2>Votre commande</h2>
 
-    <p class="intro">
-      Complétez les champs ci-dessous pour enregistrer
-      votre profil.
-    </p>
+      <div class="product">
+        <div class="product-icon">✦</div>
+        <div class="product-info">
+          <h3>Sélection Beauté</h3>
+          <p>Collection beauté · Démonstration</p>
+        </div>
+        <div class="price">49,90 €</div>
+      </div>
 
-    <form id="loyaltyForm">
-      <label for="nom">Nom</label>
-      <input
-        id="nom"
-        name="nom"
-        type="text"
-        maxlength="80"
-        autocomplete="off"
-        placeholder="Votre nom"
-        required
-      >
+      <div class="summary-line">
+        <span>Sous-total</span>
+        <span>49,90 €</span>
+      </div>
 
-      <label for="prenom">Prénom</label>
-      <input
-        id="prenom"
-        name="prenom"
-        type="text"
-        maxlength="80"
-        autocomplete="off"
-        placeholder="Votre prénom"
-        required
-      >
+      <div class="summary-line">
+        <span>Livraison</span>
+        <span>Offerte</span>
+      </div>
 
-      <label for="email">Adresse e-mail</label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        maxlength="254"
-        autocomplete="off"
-        placeholder="demo@example.com"
-        required
-      >
+      <div class="summary-line">
+        <span>Réduction</span>
+        <span>0,00 €</span>
+      </div>
 
-      <label for="telephone">Téléphone</label>
-      <input
-        id="telephone"
-        name="telephone"
-        type="text"
-        maxlength="30"
-        autocomplete="off"
-        placeholder="Téléphone"
-        required
-      >
+      <div class="summary-line total">
+        <span>Total simulé</span>
+        <strong>49,90 €</strong>
+      </div>
 
-      <label for="carte">Identifiant</label>
-      <input
-        id="carte"
-        name="numero_demo"
-        type="text"
-        maxlength="50"
-        autocomplete="off"
-        placeholder="Identifiant de profil"
-        required
-      >
+      <div class="info">
+        <strong>Simulation uniquement</strong><br>
+        Aucune transaction bancaire n'est effectuée.
+        Seules les informations de commande et de contact
+        indiquées dans le formulaire sont enregistrées.
+      </div>
+    </section>
 
-      <span class="hint">
-        Ce champ sert uniquement à un identifiant de profil.
-        N'entrez aucune donnée bancaire.
-      </span>
+    <section class="panel">
+      <h2>Vos informations</h2>
 
-      <button id="submitButton" type="submit">
-        Enregistrer mon profil
-      </button>
-    </form>
+      <form id="paymentForm">
+        <div class="field">
+          <label for="customerName">Nom complet</label>
+          <input
+            id="customerName"
+            type="text"
+            maxlength="100"
+            autocomplete="name"
+            required
+          >
+        </div>
 
-    <p id="message" role="status" aria-live="polite"></p>
+        <div class="field">
+          <label for="customerEmail">Adresse e-mail</label>
+          <input
+            id="customerEmail"
+            type="email"
+            maxlength="254"
+            autocomplete="email"
+            required
+          >
+        </div>
 
-    <div class="notice">
-      Maquette indépendante à but de présentation, non officielle
-      et non affiliée à Sephora. Aucune offre commerciale réelle
-      n'est proposée sur cette page.
-    </div>
-  </main>
+        <div class="field">
+          <label for="customerPhone">Téléphone</label>
+          <input
+            id="customerPhone"
+            type="tel"
+            maxlength="25"
+            autocomplete="tel"
+            required
+          >
+        </div>
 
-  <footer>
-    <strong>SEPHORA · CONCEPT VISUEL</strong><br>
-    Maquette indépendante, non officielle et non affiliée à Sephora.
-  </footer>
+        <h2 style="margin-top:26px">Paiement de démonstration</h2>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <div class="field">
+          <label for="cardNumber">Numéro de carte fictif</label>
+          <input
+            id="cardNumber"
+            value="DEMO-CARD-0001"
+            readonly
+          >
+        </div>
 
-  <script>
-    const SUPABASE_URL =
-      "https://jjtwodgevtkltqovargh.supabase.co";
+        <div class="row">
+          <div class="field">
+            <label for="expiry">Expiration fictive</label>
+            <input id="expiry" value="12/30" readonly>
+          </div>
 
-    const SUPABASE_KEY =
-      "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
+          <div class="field">
+            <label for="cvv">CVV fictif</label>
+            <input id="cvv" value="XXX" readonly>
+          </div>
+        </div>
 
-    const client = window.supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
+        <div class="info">
+          <strong>Carte de démonstration</strong><br>
+          Aucun numéro de carte bancaire réel n'est demandé.
+          Les valeurs fictives ci-dessus ne sont pas transmises
+          à Supabase.
+        </div>
+
+        <button id="submitButton" type="submit">
+          ENREGISTRER LA SIMULATION — 49,90 €
+        </button>
+      </form>
+
+      <div id="result" class="result" role="status" aria-live="polite">
+        <strong>✓ Simulation enregistrée</strong>
+        <p id="resultReference"></p>
+        <p>Le paiement est fictif. Aucun débit n'a eu lieu.</p>
+      </div>
+
+      <div id="errorBox" class="error" role="alert"></div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  SEPHORA · Prototype de démonstration<br>
+  Aucune donnée de carte bancaire réelle n'est collectée.
+</footer>
+
+<script>
+const SUPABASE_URL =
+  "https://jjtwodgevtkltqovargh.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
+
+const form = document.getElementById("paymentForm");
+const button = document.getElementById("submitButton");
+const result = document.getElementById("result");
+const resultReference = document.getElementById("resultReference");
+const errorBox = document.getElementById("errorBox");
+
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  result.classList.remove("visible");
+  errorBox.classList.remove("visible");
+  errorBox.textContent = "";
+
+  const customerName =
+    document.getElementById("customerName").value.trim();
+
+  const customerEmail =
+    document.getElementById("customerEmail").value.trim();
+
+  const customerPhone =
+    document.getElementById("customerPhone").value.trim();
+
+  if (!customerName || !customerEmail || !customerPhone) {
+    errorBox.textContent =
+      "Veuillez remplir tous les champs obligatoires.";
+    errorBox.classList.add("visible");
+    return;
+  }
+
+  if (!form.reportValidity()) {
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "ENREGISTREMENT EN COURS...";
+
+  const reference =
+    "DEMO-" + crypto.randomUUID().replaceAll("-", "")
+      .slice(0, 10).toUpperCase();
+
+  const payload = {
+    customer_name: customerName,
+    customer_email: customerEmail,
+    customer_phone: customerPhone,
+    reference: reference,
+    amount: 49.90,
+    payment_method: "demo_card",
+    status: "simulated"
+  };
+
+  try {
+    const response = await fetch(
+      `${SUPABASE_URL}/rest/v1/demo_payments`,
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(payload)
+      }
     );
 
-    const form = document.getElementById("loyaltyForm");
-    const message = document.getElementById("message");
-    const button = document.getElementById("submitButton");
+    if (!response.ok) {
+      const details = await response.text();
+      throw new Error(
+        `Supabase a refusé l'enregistrement (${response.status}). ${details}`
+      );
+    }
 
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    resultReference.textContent =
+      "Référence de commande : " + reference;
 
-      if (!form.reportValidity()) return;
+    result.classList.add("visible");
+    form.reset();
 
-      const donnees = {
-        nom: document.getElementById("nom").value.trim(),
-        prenom: document.getElementById("prenom").value.trim(),
-        mail: document.getElementById("email").value.trim(),
-        telephone: document.getElementById("telephone").value.trim(),
-        numero_demo: document.getElementById("carte").value.trim()
-      };
+    button.textContent = "SIMULATION ENREGISTRÉE";
 
-      button.disabled = true;
-      message.className = "";
-      message.textContent = "Enregistrement en cours…";
+  } catch (error) {
+    console.error("Erreur Supabase :", error);
 
-      try {
-        const { error } = await client
-          .from("demo_loyalty_cards")
-          .insert([donnees]);
+    errorBox.textContent =
+      "L'enregistrement a échoué. Vérifie que la table " +
+      "demo_payments existe, que la politique INSERT est active " +
+      "et que la clé publique correspond à ton projet. Détail : " +
+      error.message;
 
-        if (error) throw error;
-
-        message.className = "success";
-        message.textContent = "Profil enregistré avec succès.";
-        form.reset();
-
-      } catch (error) {
-        console.error("Erreur Supabase :", error);
-
-        message.className = "error";
-        message.textContent =
-          "Erreur d'enregistrement : " +
-          (error.message || "Vérifiez la configuration Supabase.");
-
-      } finally {
-        button.disabled = false;
-      }
-    });
-  </script>
+    errorBox.classList.add("visible");
+    button.disabled = false;
+    button.textContent = "RÉESSAYER LA SIMULATION";
+  }
+});
+</script>
 </body>
 </html>
