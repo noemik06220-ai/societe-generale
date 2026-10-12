@@ -1,69 +1,106 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fidélité Démo</title>
+  <meta name="theme-color" content="#111111">
+
+  <title>Mon Espace Fidélité</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #292929;
+      background: #f2f2f2;
+      color: #202020;
     }
 
     header {
-      background: #d71920;
+      background: #111;
       color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 28px 16px;
+      border-bottom: 5px solid #d71920;
     }
 
-    header h1 { margin: 0; }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin-bottom: 0;
+      color: #ddd;
+    }
 
     .banner {
       padding: 12px;
       background: #fff0f0;
       color: #a51017;
       text-align: center;
-      font-weight: bold;
       font-size: 13px;
+      font-weight: bold;
     }
 
     main {
-      max-width: 500px;
+      max-width: 520px;
       margin: 28px auto;
-      padding: 24px;
+      padding: 26px;
       background: white;
       border-radius: 12px;
-      box-shadow: 0 4px 18px #00000012;
+      box-shadow: 0 5px 22px #00000012;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .intro {
+      color: #666;
+      line-height: 1.5;
+      font-size: 14px;
     }
 
     label {
       display: block;
-      margin-top: 16px;
+      margin-top: 17px;
+      font-size: 14px;
       font-weight: bold;
     }
 
     input {
       width: 100%;
-      padding: 12px;
+      padding: 13px;
       margin-top: 7px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 7px;
       font-size: 16px;
+      background: #fff;
+      color: #222;
+    }
+
+    input:focus {
+      outline: 2px solid #d71920;
+      border-color: #d71920;
+    }
+
+    .hint {
+      display: block;
+      margin-top: 6px;
+      color: #666;
+      font-size: 12px;
     }
 
     button {
       width: 100%;
-      margin-top: 22px;
-      padding: 14px;
-      border: 0;
-      border-radius: 6px;
+      margin-top: 24px;
+      padding: 15px;
+      border: none;
+      border-radius: 7px;
       background: #d71920;
       color: white;
       font-size: 16px;
@@ -71,58 +108,134 @@
       cursor: pointer;
     }
 
+    button:hover {
+      background: #b71319;
+    }
+
     button:disabled {
-      opacity: 0.6;
+      opacity: .6;
       cursor: wait;
     }
 
     #message {
       margin-top: 18px;
       text-align: center;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+
+    .success {
+      color: #16733a;
+    }
+
+    .error {
+      color: #c01820;
     }
 
     footer {
-      text-align: center;
       padding: 18px;
+      text-align: center;
       color: #666;
-      font-size: 13px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 560px) {
+      main {
+        margin: 18px 12px;
+        padding: 20px;
+      }
+
+      header h1 {
+        font-size: 24px;
+      }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Fidélité Démo</h1>
-    <p>Prototype de test</p>
+    <h1>MON ESPACE FIDÉLITÉ</h1>
+    <p>Gestion de profil — démonstration</p>
   </header>
 
   <div class="banner">
-    SITE FICTIF — DONNÉES DE TEST UNIQUEMENT
+    PROTOTYPE DE TEST — INFORMATIONS FICTIVES UNIQUEMENT
   </div>
 
   <main>
-    <h2>Tester l'enregistrement</h2>
-    <p>Utilise uniquement des informations inventées.</p>
+    <h2>Créer mon profil</h2>
+
+    <p class="intro">
+      Complète les champs ci-dessous pour tester
+      l'enregistrement dans ta base Supabase.
+      Utilise uniquement des données fictives.
+    </p>
 
     <form id="loyaltyForm">
-      <label for="nom">Nom fictif</label>
-      <input id="nom" required maxlength="80" autocomplete="off">
+      <label for="nom">Nom</label>
+      <input
+        id="nom"
+        name="nom"
+        type="text"
+        maxlength="80"
+        autocomplete="off"
+        placeholder="Ex. : Martin"
+        required
+      >
 
-      <label for="prenom">Prénom fictif</label>
-      <input id="prenom" required maxlength="80" autocomplete="off">
+      <label for="prenom">Prénom</label>
+      <input
+        id="prenom"
+        name="prenom"
+        type="text"
+        maxlength="80"
+        autocomplete="off"
+        placeholder="Ex. : Alex"
+        required
+      >
 
-      <label for="carte">Numéro de démonstration</label>
+      <label for="email">Adresse e-mail</label>
+      <input
+        id="email"
+        name="email"
+        type="email"
+        maxlength="254"
+        autocomplete="off"
+        placeholder="demo@example.com"
+        required
+      >
+
+      <label for="telephone">Numéro de téléphone</label>
+      <input
+        id="telephone"
+        name="telephone"
+        type="tel"
+        maxlength="20"
+        autocomplete="off"
+        placeholder="06 00 00 00 00"
+        required
+      >
+
+      <label for="carte">Numéro de carte de démonstration</label>
       <input
         id="carte"
-        required
+        name="numero_demo"
+        type="text"
         pattern="DEMO-[0-9]{6}"
         title="Format attendu : DEMO-123456"
         placeholder="DEMO-123456"
+        maxlength="11"
         autocomplete="off"
+        required
       >
 
+      <span class="hint">
+        Identifiant fictif uniquement, pas une carte bancaire.
+        Format : DEMO-123456.
+      </span>
+
       <button id="submitButton" type="submit">
-        Enregistrer le test
+        Enregistrer mon profil de test
       </button>
     </form>
 
@@ -130,10 +243,11 @@
   </main>
 
   <footer>
-    Démonstration uniquement. Ne saisis aucune donnée réelle.
+    Prototype de démonstration. Ne saisis aucune donnée personnelle réelle.
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
     const SUPABASE_URL =
       "https://jjtwodgevtkltqovargh.supabase.co";
@@ -153,19 +267,26 @@
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      if (!form.reportValidity()) return;
+
       const donnees = {
         nom: document.getElementById("nom").value.trim(),
         prenom: document.getElementById("prenom").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        telephone: document.getElementById("telephone").value.trim(),
         numero_demo: document.getElementById("carte").value.trim()
       };
 
       if (!/^DEMO-[0-9]{6}$/.test(donnees.numero_demo)) {
-        message.textContent = "Utilise le format DEMO-123456.";
+        message.className = "error";
+        message.textContent =
+          "Le numéro de démonstration doit être au format DEMO-123456.";
         return;
       }
 
       button.disabled = true;
-      message.textContent = "Enregistrement du test…";
+      message.className = "";
+      message.textContent = "Enregistrement en cours…";
 
       try {
         const { error } = await client
@@ -174,13 +295,20 @@
 
         if (error) throw error;
 
+        message.className = "success";
         message.textContent =
-          "Test enregistré dans Supabase avec succès.";
+          "Profil de démonstration enregistré avec succès.";
+
         form.reset();
+
       } catch (error) {
         console.error("Erreur Supabase :", error);
+
+        message.className = "error";
         message.textContent =
-          "Échec de l'enregistrement. Vérifie la table et ses autorisations.";
+          "Enregistrement impossible. Vérifie la table Supabase, " +
+          "les autorisations et la connexion Internet.";
+
       } finally {
         button.disabled = false;
       }
