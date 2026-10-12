@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Administration — Banque</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f8;color:#202939}
+header{background:#202b3c;color:white;padding:22px}
+header h1{margin:0;font-size:23px}
+header p{margin:8px 0 0;color:#d6deea}
+main{max-width:950px;margin:25px auto;padding:0 15px}
+.notice{background:#fff3d6;padding:13px;border-radius:8px;font-size:14px}
+.card{background:white;padding:20px;border-radius:12px;margin-top:18px;box-shadow:0 2px 10px #0000000a}
+input,button{padding:12px;border-radius:7px;font-size:15px}
+input{border:1px solid #ccd2dc;width:100%;margin:6px 0 12px}
+button{border:0;background:#263b59;color:white;cursor:pointer}
+button.secondary{background:#e7ebf1;color:#202939}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:12px 6px;border-bottom:1px solid #e6e9ee}
+th{font-size:13px;color:#687386}
+.small{font-size:13px;color:#657084}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:600px){th,td{font-size:13px;padding:9px 4px}.card{padding:13px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Banque Démo</h1>
+  <p>Espace de gestion — comptes fictifs</p>
+</header>
+<main>
+  <div class="notice">
+    <strong>SIMULATION UNIQUEMENT</strong><br>
+    Aucun compte bancaire réel. Les données sont des exemples
+    enregistrés uniquement dans ce navigateur.
+  </div>
+
+  <section class="card">
+    <h2>Vue d'ensemble</h2>
+    <p>Comptes de démonstration : <strong id="count">0</strong></p>
+    <p>Total des soldes fictifs : <strong id="total">0,00 €</strong></p>
+  </section>
+
+  <section class="card">
+    <h2>Créer un compte de test</h2>
+    <label for="name">Nom fictif</label>
+    <input id="name" placeholder="Ex. Client Démo">
+    <label for="balance">Solde fictif en euros</label>
+    <input id="balance" type="number" min="0" step="0.01"
+      placeholder="Ex. 250">
+    <button onclick="addAccount()">Créer le compte</button>
+  </section>
+
+  <section class="card">
+    <h2>Comptes de démonstration</h2>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr><th>Client</th><th>Solde fictif</th><th>Actions</th></tr></thead>
+        <tbody id="accounts"></tbody>
+      </table>
+    </div>
+    <p class="small">Les modifications restent locales à ce navigateur.</p>
+    <button class="secondary" onclick="resetDemo()">Réinitialiser les exemples</button>
+  </section>
+</main>
+
+<script>
+const KEY = "banque-demo-comptes-v1";
+const initial = [
+  {id:1,name:"Client Démo 01",balance:1250},
+  {id:2,name:"Client Démo 02",balance:480}
+];
+
+function loadAccounts(){
+  try {
+    const saved = localStorage.getItem(KEY);
+    return saved ? JSON.parse(saved) : initial.map(x=>({...x}));
+  } catch {
+    return initial.map(x=>({...x}));
+  }
+}
+let accounts = loadAccounts();
+
+function save(){
+  localStorage.setItem(KEY,JSON.stringify(accounts));
+  render();
+}
+function euro(n){
+  return Number(n).toLocaleString("fr-FR",{
+    style:"currency",currency:"EUR"
+  });
+}
+function render(){
+  document.getElementById("count").textContent=accounts.length;
+  document.getElementById("total").textContent=
+    euro(accounts.reduce((s,a)=>s+a.balance,0));
+  const tbody=document.getElementById("accounts");
+  tbody.replaceChildren();
+
+  accounts.forEach(a=>{
+    const tr=document.createElement("tr");
+    const name=document.createElement("td");
+    name.textContent=a.name;
+    const balance=document.createElement("td");
+    balance.textContent=euro(a.balance);
+    const actions=document.createElement("td");
+    const btn=document.createElement("button");
+    btn.textContent="Modifier";
+    btn.onclick=()=>editAccount(a.id);
+    actions.appendChild(btn);
+    tr.append(name,balance,actions);
+    tbody.appendChild(tr);
+  });
+}
+function addAccount(){
+  const name=document.getElementById("name").value.trim();
+  const balance=Number(document.getElementById("balance").value);
+  if(!name || !Number.isFinite(balance) || balance<0){
+    alert("Entre un nom et un solde fictifs valides.");
+    return;
+  }
+  accounts.push({id:Date.now(),name,balance});
+  document.getElementById("name").value="";
+  document.getElementById("balance").value="";
+  save();
+}
+function editAccount(id){
+  const a=accounts.find(x=>x.id===id);
+  if(!a)return;
+  const value=prompt("Nouveau solde fictif (€) :",String(a.balance));
+  if(value===null || value.trim()==="")return;
+  const balance=Number(value);
+  if(!Number.isFinite(balance)||balance<0){
+    alert("Solde invalide.");
+    return;
+  }
+  a.balance=balance;
+  save();
+}
+function resetDemo(){
+  if(!confirm("Réinitialiser tous les comptes de démonstration ?"))return;
+  accounts=initial.map(x=>({...x}));
+  save();
+}
+render();
+</script>
+</body>
+</html>
