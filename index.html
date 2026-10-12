@@ -67,62 +67,11 @@ footer { text-align: center; padding: 24px; color: #64748b; }
 </style>
 </head>
 <body>
-<header>
-  <h1>Nova Démo</h1>
-  <p>Votre espace bancaire fictif</p>
-</header>
-<main>
-  <div class="demo">MODE DÉMONSTRATION — DONNÉES 100 % FICTIVES</div>
-
-  <section class="balance">
-    <p>Solde de démonstration</p>
-    <div class="amount">2 450,00 €</div>
-    <p>Compte fictif •••• 2048</p>
-  </section>
-
-  <section class="card">
-    <h2>Transactions de test</h2>
-    <div class="transaction"><span>Supermarché Exemple</span><b>−42,50 €</b></div>
-    <div class="transaction"><span>Salaire fictif</span><b>+1 800,00 €</b></div>
-    <div class="transaction"><span>Café Démo</span><b>−8,20 €</b></div>
-  </section>
-
-  <section class="card">
-    <h2>Ajouter une opération fictive</h2>
-    <form id="demoForm">
-      <label for="person">Nom fictif</label>
-      <input id="person" maxlength="50" placeholder="Ex. Alex Démo" required>
-      <label for="amount">Montant en euros</label>
-      <input id="amount" type="number" min="0.01"
-        max="100000" step="0.01" placeholder="Ex. 25.50" required>
-      <button type="submit">Ajouter à la démonstration</button>
-    </form>
-    <div id="result" aria-live="polite"></div>
-    <div id="newTransactions"></div>
-  </section>
-</main>
-<footer>Nova Démo © — Simulation sans argent réel.</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const form = document.getElementById('demoForm');
-form.addEventListener('submit', function(event) {
-  event.preventDefault();
-  const name = document.getElementById('person').value.trim();
-  const amount = Number(document.getElementById('amount').value);
-  if (!name || !Number.isFinite(amount) || amount <= 0) return;
-  const row = document.createElement('div');
-  row.className = 'transaction';
-  const person = document.createElement('span');
-  person.textContent = name;
-  const value = document.createElement('b');
-  value.textContent = amount.toLocaleString('fr-FR', {
-    style: 'currency', currency: 'EUR'
-  });
-  row.append(person, value);
-  document.getElementById('newTransactions').prepend(row);
-  document.getElementById('result').textContent =
-    'Opération fictive ajoutée à cette page.';
-  form.reset();
-});
+  window.supabaseClient = window.supabase.createClient(
+    "https://jjtwodgevtkltqovargh.supabase.co",
+    "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7"
+  );
+  console.log("Supabase est prêt !");
 </script>
-</body>
-</html>
