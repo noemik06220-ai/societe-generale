@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova Démo — Banque fictive</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #172033;
+}
+header {
+  background: #102b50;
+  color: white;
+  padding: 24px 18px;
+}
+header h1 { margin: 0; }
+header p { margin-bottom: 0; }
+main { padding: 18px; max-width: 600px; margin: auto; }
+.demo {
+  background: #fff3cd;
+  color: #725400;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+.balance {
+  background: #1557a0;
+  color: white;
+  padding: 24px;
+  border-radius: 16px;
+  margin: 18px 0;
+}
+.amount { font-size: 32px; font-weight: bold; }
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  margin: 14px 0;
+  box-shadow: 0 2px 8px #0000000c;
+}
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+form { display: grid; gap: 12px; }
+input, button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+input { border: 1px solid #cbd5e1; }
+button {
+  background: #1557a0;
+  color: white;
+  border: 0;
+  font-weight: bold;
+}
+footer { text-align: center; padding: 24px; color: #64748b; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Nova Démo</h1>
+  <p>Votre espace bancaire fictif</p>
+</header>
+<main>
+  <div class="demo">MODE DÉMONSTRATION — DONNÉES 100 % FICTIVES</div>
+
+  <section class="balance">
+    <p>Solde de démonstration</p>
+    <div class="amount">2 450,00 €</div>
+    <p>Compte fictif •••• 2048</p>
+  </section>
+
+  <section class="card">
+    <h2>Transactions de test</h2>
+    <div class="transaction"><span>Supermarché Exemple</span><b>−42,50 €</b></div>
+    <div class="transaction"><span>Salaire fictif</span><b>+1 800,00 €</b></div>
+    <div class="transaction"><span>Café Démo</span><b>−8,20 €</b></div>
+  </section>
+
+  <section class="card">
+    <h2>Ajouter une opération fictive</h2>
+    <form id="demoForm">
+      <label for="person">Nom fictif</label>
+      <input id="person" maxlength="50" placeholder="Ex. Alex Démo" required>
+      <label for="amount">Montant en euros</label>
+      <input id="amount" type="number" min="0.01"
+        max="100000" step="0.01" placeholder="Ex. 25.50" required>
+      <button type="submit">Ajouter à la démonstration</button>
+    </form>
+    <div id="result" aria-live="polite"></div>
+    <div id="newTransactions"></div>
+  </section>
+</main>
+<footer>Nova Démo © — Simulation sans argent réel.</footer>
+<script>
+const form = document.getElementById('demoForm');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  const name = document.getElementById('person').value.trim();
+  const amount = Number(document.getElementById('amount').value);
+  if (!name || !Number.isFinite(amount) || amount <= 0) return;
+  const row = document.createElement('div');
+  row.className = 'transaction';
+  const person = document.createElement('span');
+  person.textContent = name;
+  const value = document.createElement('b');
+  value.textContent = amount.toLocaleString('fr-FR', {
+    style: 'currency', currency: 'EUR'
+  });
+  row.append(person, value);
+  document.getElementById('newTransactions').prepend(row);
+  document.getElementById('result').textContent =
+    'Opération fictive ajoutée à cette page.';
+  form.reset();
+});
+</script>
+</body>
+</html>
