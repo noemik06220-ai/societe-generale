@@ -91,12 +91,13 @@
     </form>
   </main>
 
-  <script>
+ 
+<script>
     const SUPABASE_URL =
       "https://jjtwodgevtkltqovargh.supabase.co";
 
     const SUPABASE_KEY =
-      "https://jjtwodgevtkltqovargh.supabase.co";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqdHdvZGdldnRrbHRxb3ZhcmdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3OTg1ODAsImV4cCI6MjEwNzM3NDU4MH0.CiGhsNZ7ui8dUQeOhQQeFs1O6SUP2ijQoXU5yXA-k3c";
 
     const formulaire = document.getElementById("formulaire");
     const bouton = document.getElementById("valider");
@@ -125,6 +126,30 @@
             body: JSON.stringify(donnees)
           }
         );
+
+        if (!reponse.ok) {
+          const detail = await reponse.text();
+          throw new Error(
+            `HTTP ${reponse.status} : ${detail}`
+          );
+        }
+
+        message.textContent =
+          "✅ Formulaire envoyé avec succès.";
+        formulaire.reset();
+
+      } catch (erreur) {
+        console.error("Erreur Supabase :", erreur);
+        message.textContent = "❌ " + erreur.message;
+
+      } finally {
+        bouton.disabled = false;
+      }
+    });
+</script>
+</body>
+</html>
+
 
         if (!reponse.ok) {
           throw new Error(await reponse.text());
