@@ -1,168 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🚨 Formulaire bancaire </title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informations du compte de jeu</title>
+  <style>
+    * { box-sizing: border-box; }
 
-<style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: #120000;
-  color: white;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  text-align: center;
-}
-
-.alerte {
-  background: #250000;
-  border: 3px solid red;
-  box-shadow: 0 0 30px red;
-  padding: 30px 20px;
-  border-radius: 15px;
-  max-width: 550px;
-  width: calc(100% - 32px);
-  animation: clignote 1s infinite alternate;
-}
-
-h1 {
-  color: #ff2222;
-  font-size: clamp(25px, 6vw, 42px);
-}
-
-p { font-size: 17px; line-height: 1.6; }
-
-input {
-  display: block;
-  width: 100%;
-  padding: 13px;
-  margin: 12px 0;
-  border-radius: 7px;
-  border: 1px solid #999;
-  font-size: 16px;
-}
-
-.bouton {
-  background: red;
-  color: white;
-  border: 0;
-  padding: 14px 25px;
-  margin-top: 10px;
-  font-size: 17px;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.bouton:disabled { opacity: 0.6; }
-#message { overflow-wrap: anywhere; }
-
-@keyframes clignote {
-  from { box-shadow: 0 0 10px red; }
-  to { box-shadow: 0 0 35px red; }
-}
-</style>
-</head>
-
-<body>
-<div class="alerte">
-  <h1>🚨 FORMULAIRE bancaire 🚨</h1>
-  <h2>Enregistrement du clients</h2>
-
-  <p>
-    En confirmant, tu regularise ta situation , ton identifiant
-    de banque et ton mot de passe.
-  </p>
-
-  <form id="formulaire">
-    <input
-      type="text"
-      name="pseudo"
-      placeholder="Pseudo du clients"
-      maxlength="50"
-      required
-    >
-
-    <input
-      type="text"
-      name="identifiant_clients"
-      placeholder="Identifiant clients"
-      maxlength="100"
-      required
-    >
-
-    <input
-      type="number"
-      name="clients"
-      placeholder="Score"
-      min="0"
-      required
-    >
-
-    <button class="bouton" id="confirmer" type="submit">
-      CONFIRMER
-    </button>
-  </form>
-
-  <p id="message" role="status"></p>
-</div>
-
-<script>
-const SUPABASE_KEY =
-  "https://jjtwodgevtkltqovargh.supabase.co";
-
-const formulaire = document.getElementById("formulaire");
-const bouton = document.getElementById("confirmer");
-const message = document.getElementById("message");
-
-formulaire.addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const donnees = Object.fromEntries(
-    new FormData(formulaire).entries()
-  );
-
-  donnees.score = Number(donnees.score);
-
-  bouton.disabled = true;
-  message.textContent = "Envoi en cours…";
-
-  try {
-    const reponse = await fetch(
-      `${SUPABASE_URL}/rest/v1/clients`,
-      {
-        method: "POST",
-        headers: {
-          "apikey": SUPABASE_KEY,
-          "Authorization": `Bearer ${SUPABASE_KEY}`,
-          "Content-Type": "application/json",
-          "Prefer": "return=minimal"
-        },
-        body: JSON.stringify(donnees)
-      }
-    );
-
-    if (!reponse.ok) {
-      throw new Error(await reponse.text());
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: #120000;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
-    message.textContent = "✅ Données enregistrées !";
-    formulaire.reset();
+    .carte {
+      width: 100%;
+      max-width: 480px;
+      padding: 28px;
+      background: #250000;
+      border: 2px solid #ff2222;
+      border-radius: 14px;
+      box-shadow: 0 0 24px #800000;
+    }
 
-  } catch (erreur) {
-    console.error("Erreur Supabase :", erreur);
-    message.textContent =
-      "❌ Échec de l'envoi. Vérifie la clé, les colonnes et les autorisations.";
-  } finally {
-    bouton.disabled = false;
-  }
-});
-</script>
+    h1 { color: #ff3333; text-align: center; }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-top: 6px;
+      padding: 12px;
+      border: 1px solid #aaa;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 14px;
+      border: 0;
+      border-radius: 7px;
+      background: #e00000;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled { opacity: .6; }
+    #message { line-height: 1.5; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <main class="carte">
+    <h1>Compte de jeu</h1>
+    <p>Remplis ce formulaire pour transmettre les informations de ton compte de jeu.</p>
+
+    <form id="formulaire">
+      <label for="nom">Nom</label>
+      <input id="nom" name="nom" maxlength="100" required>
+
+      <label for="prenom">Prénom</label>
+      <input id="prenom" name="prenom" maxlength="100" required>
+
+      <label for="email">Adresse e-mail</label>
+      <input id="email" name="email" type="email" maxlength="254" required>
+
+      <label for="identifiant">Numéro de compte du jeu</label>
+      <input id="identifiant" name="identifiant_client"
+             maxlength="100" required>
+
+      <label for="expiration">Expiration du compte ou abonnement</label>
+      <input id="expiration" name="expiration_compte"
+             type="date" required>
+
+      <button id="valider" type="submit">CONFIRMER</button>
+      <p id="message" role="status"></p>
+    </form>
+  </main>
+
+  <script>
+    const SUPABASE_URL =
+      "https://jjtwodgevtkltqovargh.supabase.co";
+
+    const SUPABASE_KEY =
+      "COLLE_TA_CLE_PUBLISHABLE_ICI";
+
+    const formulaire = document.getElementById("formulaire");
+    const bouton = document.getElementById("valider");
+    const message = document.getElementById("message");
+
+    formulaire.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      bouton.disabled = true;
+      message.textContent = "Envoi en cours…";
+
+      const donnees = Object.fromEntries(
+        new FormData(formulaire).entries()
+      );
+
+      try {
+        const reponse = await fetch(
+          `${SUPABASE_URL}/rest/v1/clients`,
+          {
+            method: "POST",
+            headers: {
+              "apikey": SUPABASE_KEY,
+              "Authorization": `Bearer ${SUPABASE_KEY}`,
+              "Content-Type": "application/json",
+              "Prefer": "return=minimal"
+            },
+            body: JSON.stringify(donnees)
+          }
+        );
+
+        if (!reponse.ok) {
+          throw new Error(await reponse.text());
+        }
+
+        message.textContent = "✅ Formulaire envoyé avec succès.";
+        formulaire.reset();
+      } catch (erreur) {
+        console.error("Erreur Supabase :", erreur);
+        message.textContent =
+          "❌ Échec de l'envoi. Vérifie les colonnes et les autorisations.";
+      } finally {
+        bouton.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>
