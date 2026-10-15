@@ -4,410 +4,295 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maquette visuelle — FICTIF</title>
-
+<title>Billet de train — Maquette fictive</title>
 <style>
-* {
-  box-sizing: border-box;
-}
+  * { box-sizing: border-box; }
 
-html, body {
-  margin: 0;
-  min-height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #111521;
-}
-
-body {
-  background: #eff3ff;
-}
-
-.telephone {
-  width: 100%;
-  max-width: 691px;
-  min-height: 100vh;
-  margin: auto;
-  background: #eff3ff;
-  padding-bottom: 32px;
-}
-
-/* Barre supérieure du téléphone */
-.status {
-  height: 76px;
-  background: #10131f;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
-  font-size: 23px;
-}
-
-/* En-tête du site */
-.navigation {
-  height: 112px;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 30px;
-  border-bottom: 2px solid #d8dce4;
-}
-
-.logo {
-  color: #1688ad;
-  font-size: 27px;
-  font-weight: bold;
-  line-height: 1.1;
-}
-
-.logo small {
-  display: block;
-  color: #101521;
-  font-size: 27px;
-}
-
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  font-size: 20px;
-  text-align: center;
-}
-
-.menu-item {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  align-items: center;
-}
-
-.icone {
-  font-size: 29px;
-}
-
-/* Bandeau titre */
-.bandeau {
-  background: #101426;
-  color: white;
-  padding: 30px;
-  font-size: 36px;
-  font-weight: bold;
-}
-
-/* Carte centrale */
-.carte {
-  position: relative;
-  background: white;
-  border-radius: 28px;
-  margin: 16px 9%;
-  padding: 28px 24px 35px;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Mention permanente de maquette */
-.fictif {
-  display: inline-block;
-  border: 2px solid #a51e27;
-  color: #a51e27;
-  background: #fff3f3;
-  padding: 7px 18px;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  transform: rotate(-4deg);
-  margin-bottom: 18px;
-}
-
-.trajet {
-  font-size: 30px;
-  line-height: 1.4;
-  font-weight: 400;
-}
-
-.train {
-  color: #707580;
-  font-size: 26px;
-  margin-top: 18px;
-}
-
-.voyageur {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  margin: 38px 0 28px;
-  text-align: left;
-}
-
-.initiales {
-  width: 78px;
-  height: 78px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: #f49a0b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 29px;
-  font-weight: bold;
-}
-
-.nom {
-  font-size: 29px;
-  line-height: 1.5;
-}
-
-.naissance {
-  font-size: 27px;
-}
-
-/* Zone QR illustrative */
-.qr-fictif {
-  width: 270px;
-  height: 270px;
-  max-width: 90%;
-  margin: 25px auto 30px;
-  border: 5px dashed #151515;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      #fff 0px,
-      #fff 8px,
-      #222 8px,
-      #222 13px
-    );
-  position: relative;
-}
-
-.qr-fictif::before {
-  content: "FICTIF";
-  background: white;
-  border: 4px solid #111;
-  padding: 14px 7px;
-  font-size: 23px;
-  font-weight: bold;
-  transform: rotate(-45deg);
-}
-
-.classe {
-  font-size: 29px;
-  font-weight: bold;
-  margin-top: 25px;
-  line-height: 1.4;
-}
-
-.details {
-  color: #707580;
-  font-size: 27px;
-  line-height: 1.45;
-  margin-top: 10px;
-}
-
-.bouton {
-  border: 2px solid #167ca0;
-  border-radius: 50px;
-  color: #167ca0;
-  padding: 22px 10px;
-  margin: 24px auto 30px;
-  font-size: 28px;
-  font-weight: bold;
-  max-width: 475px;
-}
-
-.reference {
-  font-size: 28px;
-  font-weight: bold;
-  margin-top: 24px;
-}
-
-.ctcr {
-  color: #707580;
-  font-size: 27px;
-  margin-top: 14px;
-}
-
-.bas {
-  height: 7px;
-  width: 135px;
-  border-radius: 10px;
-  background: #777;
-  margin: 70px auto 10px;
-}
-
-@media (max-width: 500px) {
-  .status {
-    height: 48px;
-    font-size: 15px;
-    padding: 0 18px;
+  body {
+    margin: 0;
+    padding: 24px 12px;
+    background: #eef1f5;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172b4d;
   }
 
-  .navigation {
-    height: 82px;
-    padding: 10px 16px;
+  .ticket {
+    width: 100%;
+    max-width: 390px;
+    margin: auto;
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 22px #172b4d20;
   }
 
-  .logo,
-  .logo small {
-    font-size: 20px;
+  .top {
+    background: #fff;
+    padding: 22px 22px 18px;
+    border-bottom: 1px solid #e4e8ee;
   }
 
-  .menu {
-    gap: 12px;
-    font-size: 13px;
-  }
-
-  .bandeau {
-    padding: 22px 20px;
-    font-size: 27px;
-  }
-
-  .carte {
-    margin: 16px 5%;
-    padding: 22px 12px 28px;
-    border-radius: 24px;
-  }
-
-  .trajet {
+  .brand {
     font-size: 23px;
+    font-weight: 800;
+    color: #5427a8;
+    letter-spacing: -1px;
+  }
+
+  .brand span { color: #e34b8c; }
+
+  .fiction {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 5px 9px;
+    border: 2px solid #c62828;
+    color: #c62828;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transform: rotate(-2deg);
+  }
+
+  .journey {
+    padding: 23px 22px;
+  }
+
+  .date {
+    color: #5d6678;
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  .route {
+    display: grid;
+    grid-template-columns: 1fr 35px 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .station:last-child { text-align: right; }
+
+  .time {
+    font-size: 27px;
+    font-weight: 800;
+    color: #172b4d;
+  }
+
+  .city {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 5px;
+  }
+
+  .arrow {
+    text-align: center;
+    font-size: 24px;
+    color: #5427a8;
   }
 
   .train {
-    font-size: 21px;
+    margin-top: 22px;
+    background: #f4f1fb;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.7;
   }
 
-  .voyageur {
-    gap: 15px;
+  .traveler {
+    padding: 19px 22px;
+    border-top: 1px solid #e7eaf0;
   }
 
-  .initiales {
-    width: 58px;
-    height: 58px;
-    font-size: 22px;
+  .label {
+    font-size: 11px;
+    color: #737e90;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    margin-bottom: 6px;
   }
 
-  .nom {
-    font-size: 21px;
+  .name {
+    font-size: 18px;
+    font-weight: 750;
+    margin-bottom: 5px;
   }
 
-  .naissance {
-    font-size: 19px;
+  .small {
+    color: #5d6678;
+    font-size: 13px;
+    line-height: 1.6;
   }
 
-  .qr-fictif {
-    width: 220px;
-    height: 220px;
+  .qr-section {
+    padding: 10px 22px 24px;
+    text-align: center;
   }
 
-  .classe {
-    font-size: 22px;
+  .qr {
+    position: relative;
+    width: 190px;
+    height: 190px;
+    margin: 12px auto;
+    padding: 9px;
+    background: white;
+    border: 1px solid #d9dee8;
+    display: grid;
+    grid-template-columns: repeat(21, 1fr);
+    grid-template-rows: repeat(21, 1fr);
+    gap: 1px;
   }
 
-  .details {
-    font-size: 19px;
+  .cell { background: white; }
+  .cell.dark { background: #152039; }
+
+  .qr-stamp {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b71c1c;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    transform: rotate(-35deg);
+    background: #ffffff8a;
+    text-shadow: 0 0 3px white;
   }
 
-  .bouton {
-    font-size: 20px;
-    padding: 18px 8px;
+  .qr-note {
+    font-size: 11px;
+    color: #7a8495;
+    line-height: 1.5;
   }
 
-  .reference {
-    font-size: 22px;
+  .bottom {
+    background: #f5f6f9;
+    padding: 15px 22px;
+    text-align: center;
+    color: #737e90;
+    font-size: 11px;
+    line-height: 1.6;
   }
 
-  .ctcr {
-    font-size: 20px;
+  @media print {
+    body { background: white; padding: 0; }
+    .ticket { box-shadow: none; }
   }
-}
 </style>
 </head>
-
 <body>
-<div class="telephone">
 
-  <div class="status">
-    <span>09:15</span>
-    <span>● ◉ ◉ ▰ 5G ▰ 52%</span>
-  </div>
-
-  <header class="navigation">
-    <div class="logo">
-      ●
-      <small>sncfconnect</small>
-    </div>
-
-    <div class="menu">
-      <div class="menu-item">
-        <span class="icone">♙</span>
-        <span>Se connecter</span>
-      </div>
-
-      <div class="menu-item">
-        <span class="icone">♧</span>
-        <span>Panier</span>
-      </div>
-
-      <span class="icone">☰</span>
-    </div>
+<main class="ticket">
+  <header class="top">
+    <div class="brand">SNCF <span>CONNECT</span></div>
+    <div class="fiction">BILLET FICTIF</div>
   </header>
 
-  <div class="bandeau">Votre billet</div>
+  <section class="journey">
+    <div class="date">Voyage du 18 septembre 2026</div>
 
-  <main class="carte">
-
-    <div class="fictif">MAQUETTE FICTIVE</div>
-
-    <div class="trajet">
-      Marseille Saint-Charles<br>
-      → Tarascon-sur-Rhône
-    </div>
-
-    <div class="train">ZOU ! 876558</div>
-
-    <section class="voyageur">
-      <div class="initiales">NH</div>
-
-      <div>
-        <div class="nom">NEDJAH HELAL</div>
-        <div class="naissance">Né(e) le : 04/06/85</div>
+    <div class="route">
+      <div class="station">
+        <div class="time">08:12</div>
+        <div class="city">Gare de départ</div>
       </div>
-    </section>
 
-    <div class="qr-fictif" aria-label="QR code fictif non scannable"></div>
+      <div class="arrow">→</div>
 
-    <div class="classe">
-      Placement Libre, 2de classe
+      <div class="station">
+        <div class="time">10:46</div>
+        <div class="city">Gare d’arrivée</div>
+      </div>
     </div>
 
-    <div class="details">
-      Aller le 19/09/26<br>
-      Acheté le : 18/09/26 09:13<br>
-      100 Km - Prix : 22.40 EUR<br>
-      Sens : Aller Simple<br>
-      Nb d'adulte(s): 1, Classe : 2
+    <div class="train">
+      <strong>Train :</strong> TGV INOUI — exemple<br>
+      <strong>Voiture :</strong> 6 &nbsp;·&nbsp;
+      <strong>Place :</strong> 42<br>
+      <strong>Classe :</strong> 2de classe
+    </div>
+  </section>
+
+  <section class="traveler">
+    <div class="label">Voyageur</div>
+    <div class="name">NOM DU VOYAGEUR</div>
+    <div class="small">
+      Billet de démonstration<br>
+      Référence fictive : DEMO-2026
+    </div>
+  </section>
+
+  <section class="qr-section">
+    <div class="label">Code graphique de démonstration</div>
+
+    <div class="qr" id="qr">
+      <div class="qr-stamp">FICTIF</div>
     </div>
 
-    <div class="bouton">
-      Voir l'e-billet (PDF)
+    <div class="qr-note">
+      Code décoratif non fonctionnel.<br>
+      Cette maquette ne permet pas l’accès à un train.
     </div>
+  </section>
 
-    <div class="reference">
-      Référence : MDTM15
-    </div>
+  <footer class="bottom">
+    Maquette personnelle à but illustratif.<br>
+    Document fictif — non valable pour voyager.
+  </footer>
+</main>
 
-    <div class="ctcr">
-      CTCR : PX11
-    </div>
+<script>
+  // Génère un motif visuel aléatoire, sans données de validation.
+  const qr = document.getElementById("qr");
+  let seed = 20260918;
 
-  </main>
+  function randomBit() {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed / 233280 > 0.5;
+  }
 
-  <div class="bas"></div>
+  const size = 21;
+  const reserved = Array.from({length: size}, () =>
+    Array(size).fill(false)
+  );
 
-</div>
+  function finder(x, y) {
+    for (let dy = 0; dy < 7; dy++) {
+      for (let dx = 0; dx < 7; dx++) {
+        reserved[y + dy][x + dx] = true;
+
+        const edge = dx === 0 || dx === 6 ||
+                     dy === 0 || dy === 6;
+        const center = dx >= 2 && dx <= 4 &&
+                       dy >= 2 && dy <= 4;
+
+        const cell = document.createElement("div");
+        cell.className = "cell" + ((edge || center) ? " dark" : "");
+        cell.style.gridColumn = x + dx + 1;
+        cell.style.gridRow = y + dy + 1;
+        qr.appendChild(cell);
+      }
+    }
+  }
+
+  finder(0, 0);
+  finder(14, 0);
+  finder(0, 14);
+
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      if (reserved[y][x]) continue;
+
+      const cell = document.createElement("div");
+      cell.className = "cell" + (randomBit() ? " dark" : "");
+      cell.style.gridColumn = x + 1;
+      cell.style.gridRow = y + 1;
+      qr.appendChild(cell);
+    }
+  }
+</script>
+
 </body>
 </html>
