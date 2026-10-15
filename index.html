@@ -4,186 +4,410 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Billet de train — Maquette fictive</title>
+<title>Maquette visuelle — FICTIF</title>
 
 <style>
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
-  padding: 20px 12px;
-  background: #eef2f8;
-  font-family: Arial, sans-serif;
-  color: #202633;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #111521;
 }
 
-.billet {
-  position: relative;
-  max-width: 520px;
+body {
+  background: #eff3ff;
+}
+
+.telephone {
+  width: 100%;
+  max-width: 691px;
+  min-height: 100vh;
   margin: auto;
-  padding: 24px;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 18px #00000015;
-  overflow: hidden;
+  background: #eff3ff;
+  padding-bottom: 32px;
 }
 
-.marque {
-  text-align: center;
-  color: #a02020;
-  border: 2px solid #a02020;
-  padding: 8px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  transform: rotate(-3deg);
-  margin: 8px auto 24px;
-  width: fit-content;
-}
-
-.entete {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.sous-titre {
-  color: #697386;
-  font-size: 14px;
-  margin-bottom: 24px;
-}
-
-.trajet {
+/* Barre supérieure du téléphone */
+.status {
+  height: 76px;
+  background: #10131f;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 18px 0;
-  border-top: 1px solid #dce2ec;
-  border-bottom: 1px solid #dce2ec;
+  padding: 0 30px;
+  font-size: 23px;
 }
 
-.gare {
-  flex: 1;
+/* En-tête du site */
+.navigation {
+  height: 112px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  border-bottom: 2px solid #d8dce4;
 }
 
-.gare:last-child {
-  text-align: right;
-}
-
-.heure {
+.logo {
+  color: #1688ad;
   font-size: 27px;
   font-weight: bold;
+  line-height: 1.1;
 }
 
-.ville {
-  font-size: 16px;
+.logo small {
+  display: block;
+  color: #101521;
+  font-size: 27px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  align-items: center;
+}
+
+.icone {
+  font-size: 29px;
+}
+
+/* Bandeau titre */
+.bandeau {
+  background: #101426;
+  color: white;
+  padding: 30px;
+  font-size: 36px;
   font-weight: bold;
-  margin-top: 5px;
 }
 
-.fleche {
-  font-size: 24px;
-  color: #526782;
+/* Carte centrale */
+.carte {
+  position: relative;
+  background: white;
+  border-radius: 28px;
+  margin: 16px 9%;
+  padding: 28px 24px 35px;
+  text-align: center;
+  overflow: hidden;
 }
 
-.info {
-  padding: 16px 0;
-  border-bottom: 1px solid #e5e9f0;
-}
-
-.libelle {
-  color: #697386;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-
-.valeur {
-  font-size: 16px;
+/* Mention permanente de maquette */
+.fictif {
+  display: inline-block;
+  border: 2px solid #a51e27;
+  color: #a51e27;
+  background: #fff3f3;
+  padding: 7px 18px;
+  font-size: 14px;
   font-weight: bold;
+  letter-spacing: 2px;
+  transform: rotate(-4deg);
+  margin-bottom: 18px;
 }
 
-.code-fictif {
-  width: 150px;
-  height: 150px;
-  margin: 22px auto 10px;
-  border: 2px dashed #a02020;
+.trajet {
+  font-size: 30px;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.train {
+  color: #707580;
+  font-size: 26px;
+  margin-top: 18px;
+}
+
+.voyageur {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin: 38px 0 28px;
+  text-align: left;
+}
+
+.initiales {
+  width: 78px;
+  height: 78px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f49a0b;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  color: #a02020;
-  font-size: 13px;
+  font-size: 29px;
   font-weight: bold;
-  padding: 12px;
 }
 
-.note {
-  text-align: center;
-  font-size: 12px;
-  color: #697386;
+.nom {
+  font-size: 29px;
+  line-height: 1.5;
 }
 
+.naissance {
+  font-size: 27px;
+}
+
+/* Zone QR illustrative */
+.qr-fictif {
+  width: 270px;
+  height: 270px;
+  max-width: 90%;
+  margin: 25px auto 30px;
+  border: 5px dashed #151515;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      #fff 0px,
+      #fff 8px,
+      #222 8px,
+      #222 13px
+    );
+  position: relative;
+}
+
+.qr-fictif::before {
+  content: "FICTIF";
+  background: white;
+  border: 4px solid #111;
+  padding: 14px 7px;
+  font-size: 23px;
+  font-weight: bold;
+  transform: rotate(-45deg);
+}
+
+.classe {
+  font-size: 29px;
+  font-weight: bold;
+  margin-top: 25px;
+  line-height: 1.4;
+}
+
+.details {
+  color: #707580;
+  font-size: 27px;
+  line-height: 1.45;
+  margin-top: 10px;
+}
+
+.bouton {
+  border: 2px solid #167ca0;
+  border-radius: 50px;
+  color: #167ca0;
+  padding: 22px 10px;
+  margin: 24px auto 30px;
+  font-size: 28px;
+  font-weight: bold;
+  max-width: 475px;
+}
+
+.reference {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 24px;
+}
+
+.ctcr {
+  color: #707580;
+  font-size: 27px;
+  margin-top: 14px;
+}
+
+.bas {
+  height: 7px;
+  width: 135px;
+  border-radius: 10px;
+  background: #777;
+  margin: 70px auto 10px;
+}
+
+@media (max-width: 500px) {
+  .status {
+    height: 48px;
+    font-size: 15px;
+    padding: 0 18px;
+  }
+
+  .navigation {
+    height: 82px;
+    padding: 10px 16px;
+  }
+
+  .logo,
+  .logo small {
+    font-size: 20px;
+  }
+
+  .menu {
+    gap: 12px;
+    font-size: 13px;
+  }
+
+  .bandeau {
+    padding: 22px 20px;
+    font-size: 27px;
+  }
+
+  .carte {
+    margin: 16px 5%;
+    padding: 22px 12px 28px;
+    border-radius: 24px;
+  }
+
+  .trajet {
+    font-size: 23px;
+  }
+
+  .train {
+    font-size: 21px;
+  }
+
+  .voyageur {
+    gap: 15px;
+  }
+
+  .initiales {
+    width: 58px;
+    height: 58px;
+    font-size: 22px;
+  }
+
+  .nom {
+    font-size: 21px;
+  }
+
+  .naissance {
+    font-size: 19px;
+  }
+
+  .qr-fictif {
+    width: 220px;
+    height: 220px;
+  }
+
+  .classe {
+    font-size: 22px;
+  }
+
+  .details {
+    font-size: 19px;
+  }
+
+  .bouton {
+    font-size: 20px;
+    padding: 18px 8px;
+  }
+
+  .reference {
+    font-size: 22px;
+  }
+
+  .ctcr {
+    font-size: 20px;
+  }
+}
 </style>
 </head>
 
 <body>
-<main class="billet">
+<div class="telephone">
 
-  <div class="marque">FICTIF — NON VALABLE</div>
+  <div class="status">
+    <span>09:15</span>
+    <span>● ◉ ◉ ▰ 5G ▰ 52%</span>
+  </div>
 
-  <div class="entete">Billet de train</div>
-  <div class="sous-titre">Maquette visuelle non officielle</div>
-
-  <section class="trajet">
-    <div class="gare">
-      <div class="heure">HH:MM</div>
-      <div class="ville">Départ</div>
+  <header class="navigation">
+    <div class="logo">
+      ●
+      <small>sncfconnect</small>
     </div>
 
-    <div class="fleche">→</div>
+    <div class="menu">
+      <div class="menu-item">
+        <span class="icone">♙</span>
+        <span>Se connecter</span>
+      </div>
 
-    <div class="gare">
-      <div class="heure">HH:MM</div>
-      <div class="ville">Arrivée</div>
+      <div class="menu-item">
+        <span class="icone">♧</span>
+        <span>Panier</span>
+      </div>
+
+      <span class="icone">☰</span>
     </div>
-  </section>
+  </header>
 
-  <div class="info">
-    <div class="libelle">VOYAGEUR</div>
-    <div class="valeur">Nom Prénom</div>
-  </div>
+  <div class="bandeau">Votre billet</div>
 
-  <div class="info">
-    <div class="libelle">DATE DU VOYAGE</div>
-    <div class="valeur">JJ/MM/AAAA</div>
-  </div>
+  <main class="carte">
 
-  <div class="info">
-    <div class="libelle">TRAIN</div>
-    <div class="valeur">Numéro du train</div>
-  </div>
+    <div class="fictif">MAQUETTE FICTIVE</div>
 
-  <div class="info">
-    <div class="libelle">TRAJET</div>
-    <div class="valeur">Gare de départ → Gare d’arrivée</div>
-  </div>
+    <div class="trajet">
+      Marseille Saint-Charles<br>
+      → Tarascon-sur-Rhône
+    </div>
 
-  <div class="info">
-    <div class="libelle">VOITURE ET PLACE</div>
-    <div class="valeur">À renseigner</div>
-  </div>
+    <div class="train">ZOU ! 876558</div>
 
-  <div class="code-fictif">
-    QR CODE FICTIF<br>
-    NON VALABLE POUR VOYAGER
-  </div>
+    <section class="voyageur">
+      <div class="initiales">NH</div>
 
-  <div class="note">
-    Document de démonstration uniquement.
-  </div>
+      <div>
+        <div class="nom">NEDJAH HELAL</div>
+        <div class="naissance">Né(e) le : 04/06/85</div>
+      </div>
+    </section>
 
-</main>
+    <div class="qr-fictif" aria-label="QR code fictif non scannable"></div>
+
+    <div class="classe">
+      Placement Libre, 2de classe
+    </div>
+
+    <div class="details">
+      Aller le 19/09/26<br>
+      Acheté le : 18/09/26 09:13<br>
+      100 Km - Prix : 22.40 EUR<br>
+      Sens : Aller Simple<br>
+      Nb d'adulte(s): 1, Classe : 2
+    </div>
+
+    <div class="bouton">
+      Voir l'e-billet (PDF)
+    </div>
+
+    <div class="reference">
+      Référence : MDTM15
+    </div>
+
+    <div class="ctcr">
+      CTCR : PX11
+    </div>
+
+  </main>
+
+  <div class="bas"></div>
+
+</div>
 </body>
 </html>
