@@ -4,91 +4,319 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title></title>
+
 <style>
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
+
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+
 body{
-  margin:0;background:#eef1ff;color:#171b2b;
-  font-family:Arial,Helvetica,sans-serif
+  margin:0;
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+  background:#eef1ff;
+  color:#171b2b;
+  font-family:Arial,Helvetica,sans-serif;
 }
+
 .nav{
-  background:white;padding:19px 17px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid #e2e5ed
+  background:white;
+  padding:19px 17px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #e2e5ed;
+  width:100%;
+  min-width:0;
 }
-.logo{font-size:22px;font-weight:800;color:#087fa5}
-.logo span{color:#222638}
-.navicons{font-size:22px;letter-spacing:7px}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+  color:#087fa5;
+}
+
+.logo span{
+  color:#222638;
+}
+
+.navicons{
+  font-size:22px;
+  letter-spacing:7px;
+  white-space:nowrap;
+}
+
 .page-title{
-  background:#111528;color:white;
-  padding:24px 20px;font-size:25px;font-weight:750
+  background:#111528;
+  color:white;
+  padding:24px 20px;
+  font-size:25px;
+  font-weight:750;
+  width:100%;
 }
-main{max-width:520px;margin:16px auto;padding:0 12px 30px}
+
+main{
+  width:100%;
+  max-width:520px;
+  margin:16px auto;
+  padding:0 12px 30px;
+  min-width:0;
+}
+
 .card{
-  background:#fff;border-radius:24px;overflow:hidden;
-  box-shadow:0 4px 18px #172b4d12
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 4px 18px #172b4d12;
 }
-.content{padding:22px 20px}
+
+.content{
+  padding:22px 20px;
+  width:100%;
+  min-width:0;
+}
+
 .demo{
-  display:inline-block;padding:6px 10px;
-  border:2px solid #c62828;color:#c62828;
-  font-size:11px;font-weight:900;letter-spacing:1.4px;
-  margin-bottom:20px
+  display:inline-block;
+  padding:6px 10px;
+  border:2px solid #c62828;
+  color:#c62828;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  margin-bottom:20px;
 }
-.date{font-size:15px;color:#687285;margin-bottom:20px}
+
+.date{
+  font-size:15px;
+  color:#687285;
+  margin-bottom:20px;
+}
+
 .route{
-  display:grid;grid-template-columns:1fr 30px 1fr;
-  gap:5px;align-items:center
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);
+  gap:4px;
+  align-items:center;
+  width:100%;
+  min-width:0;
 }
-.station:last-child{text-align:right}
-.time{font-size:27px;font-weight:800}
-.city{font-size:15px;font-weight:700;line-height:1.4;margin-top:6px}
-.arrow{text-align:center;font-size:24px;color:#087fa5}
+
+.station{
+  min-width:0;
+}
+
+.station:last-child{
+  text-align:right;
+}
+
+.time{
+  font-size:clamp(20px,6vw,27px);
+  font-weight:800;
+  white-space:nowrap;
+  letter-spacing:-0.5px;
+}
+
+.city{
+  font-size:clamp(12px,3.7vw,15px);
+  font-weight:700;
+  line-height:1.4;
+  margin-top:6px;
+  overflow-wrap:break-word;
+}
+
+.arrow{
+  text-align:center;
+  font-size:22px;
+  color:#087fa5;
+}
+
 .train{
-  background:#f2f3fb;border-radius:12px;padding:13px;
-  margin-top:21px;font-size:14px;line-height:1.8
+  background:#f2f3fb;
+  border-radius:12px;
+  padding:13px;
+  margin-top:21px;
+  font-size:14px;
+  line-height:1.8;
+  width:100%;
+  overflow-wrap:break-word;
 }
+
 .person{
-  border-top:1px solid #e6e8ef;padding:20px;
-  display:flex;align-items:center;gap:15px
+  border-top:1px solid #e6e8ef;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  min-width:0;
+  max-width:100%;
 }
+
 .avatar{
-  flex-shrink:0;width:62px;height:62px;border-radius:50%;
-  background:#f4a018;display:flex;align-items:center;
-  justify-content:center;font-size:21px;font-weight:800
+  flex-shrink:0;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:#f4a018;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:21px;
+  font-weight:800;
 }
-.name{font-size:18px;font-weight:800;margin-bottom:6px}
-.birth{font-size:13px;color:#687285;line-height:1.6}
-.qr-area{text-align:center;padding:10px 20px 24px}
+
+.name{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:6px;
+  overflow-wrap:anywhere;
+}
+
+.birth{
+  font-size:13px;
+  color:#687285;
+  line-height:1.6;
+  overflow-wrap:break-word;
+}
+
+.qr-area{
+  text-align:center;
+  padding:10px 20px 24px;
+  min-width:0;
+  max-width:100%;
+}
+
 .label{
-  font-size:11px;color:#778093;text-transform:uppercase;
-  letter-spacing:1px
+  font-size:11px;
+  color:#778093;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  overflow-wrap:anywhere;
 }
+
 #qrcode{
-  width:210px;height:210px;padding:8px;margin:15px auto;
-  border:1px solid #dfe3eb;background:white;
-  display:flex;align-items:center;justify-content:center
+  width:210px;
+  max-width:100%;
+  height:210px;
+  padding:8px;
+  margin:15px auto;
+  border:1px solid #dfe3eb;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
-#qrcode img,#qrcode canvas{max-width:100%;height:auto}
+
+#qrcode img,
+#qrcode canvas{
+  max-width:100%;
+  height:auto;
+}
+
 .info{
-  font-size:14px;line-height:1.9;color:#505b6e;
-  text-align:left;margin-top:18px
+  font-size:14px;
+  line-height:1.9;
+  color:#505b6e;
+  text-align:left;
+  margin-top:18px;
+  overflow-wrap:break-word;
 }
+
 .button{
-  margin:20px 0 5px;border:2px solid #087fa5;
-  color:#087fa5;border-radius:30px;padding:15px 10px;
-  font-weight:750;text-align:center
+  margin:20px 0 5px;
+  border:2px solid #087fa5;
+  color:#087fa5;
+  border-radius:30px;
+  padding:15px 10px;
+  font-weight:750;
+  text-align:center;
+  overflow-wrap:break-word;
 }
+
 .footer{
-  background:#f6f7fa;padding:16px 18px;text-align:center;
-  color:#707b8d;font-size:11px;line-height:1.7
+  background:#f6f7fa;
+  padding:16px 18px;
+  text-align:center;
+  color:#707b8d;
+  font-size:11px;
+  line-height:1.7;
+  overflow-wrap:break-word;
 }
-@media(max-width:360px){
-  .content{padding:18px 13px}
-  .time{font-size:23px}
-  .city{font-size:13px}
+
+@media(max-width:380px){
+  main{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .content{
+    padding:18px 13px;
+  }
+
+  .route{
+    grid-template-columns:minmax(0,1fr) 20px minmax(0,1fr);
+    gap:3px;
+  }
+
+  .time{
+    font-size:21px;
+  }
+
+  .city{
+    font-size:12px;
+  }
+
+  .arrow{
+    font-size:19px;
+  }
+
+  .qr-area{
+    padding-left:13px;
+    padding-right:13px;
+  }
+}
+
+@media(max-width:320px){
+  .nav{
+    padding:16px 12px;
+  }
+
+  .logo{
+    font-size:19px;
+  }
+
+  .navicons{
+    font-size:18px;
+    letter-spacing:4px;
+  }
+
+  .time{
+    font-size:19px;
+  }
+
+  .route{
+    grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);
+    gap:2px;
+  }
+
+  .train{
+    font-size:13px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header class="nav">
@@ -105,12 +333,16 @@ main{max-width:520px;margin:16px auto;padding:0 12px 30px}
 <main>
 <section class="card">
 
+  <div class="content">
+
     <div class="route">
       <div class="station">
         <div class="time">08:12</div>
         <div class="city">Marseille<br>Saint-Charles</div>
       </div>
+
       <div class="arrow">→</div>
+
       <div class="station">
         <div class="time">10:46</div>
         <div class="city">Tarascon-<br>sur-Rhône</div>
@@ -124,14 +356,18 @@ main{max-width:520px;margin:16px auto;padding:0 12px 30px}
       <strong>Classe :</strong> 2de classe<br>
       <strong>Place :</strong> placement libre
     </div>
+
   </div>
 
   <div class="person">
     <div class="avatar">AB</div>
+
     <div>
       <div class="name">PRÉNOM NOM</div>
-      <div class="birth">Voyageur<br>
-      Date de naissance : JJ/MM/AAAA</div>
+      <div class="birth">
+        Voyageur<br>
+        Date de naissance : JJ/MM/AAAA
+      </div>
     </div>
   </div>
 
@@ -162,6 +398,7 @@ main{max-width:520px;margin:16px auto;padding:0 12px 30px}
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 <script>
 new QRCode(document.getElementById("qrcode"), {
   text: "https://example.com/",
