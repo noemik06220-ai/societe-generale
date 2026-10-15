@@ -4,294 +4,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Billet de train — Maquette fictive</title>
+<title>Billet de démonstration</title>
 <style>
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    padding: 24px 12px;
-    background: #eef1f5;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #172b4d;
-  }
-
-  .ticket {
-    width: 100%;
-    max-width: 390px;
-    margin: auto;
-    background: white;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 5px 22px #172b4d20;
-  }
-
-  .top {
-    background: #fff;
-    padding: 22px 22px 18px;
-    border-bottom: 1px solid #e4e8ee;
-  }
-
-  .brand {
-    font-size: 23px;
-    font-weight: 800;
-    color: #5427a8;
-    letter-spacing: -1px;
-  }
-
-  .brand span { color: #e34b8c; }
-
-  .fiction {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 5px 9px;
-    border: 2px solid #c62828;
-    color: #c62828;
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    transform: rotate(-2deg);
-  }
-
-  .journey {
-    padding: 23px 22px;
-  }
-
-  .date {
-    color: #5d6678;
-    font-size: 14px;
-    margin-bottom: 22px;
-  }
-
-  .route {
-    display: grid;
-    grid-template-columns: 1fr 35px 1fr;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .station:last-child { text-align: right; }
-
-  .time {
-    font-size: 27px;
-    font-weight: 800;
-    color: #172b4d;
-  }
-
-  .city {
-    font-size: 15px;
-    font-weight: 700;
-    margin-top: 5px;
-  }
-
-  .arrow {
-    text-align: center;
-    font-size: 24px;
-    color: #5427a8;
-  }
-
-  .train {
-    margin-top: 22px;
-    background: #f4f1fb;
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 13px;
-    line-height: 1.7;
-  }
-
-  .traveler {
-    padding: 19px 22px;
-    border-top: 1px solid #e7eaf0;
-  }
-
-  .label {
-    font-size: 11px;
-    color: #737e90;
-    text-transform: uppercase;
-    letter-spacing: .8px;
-    margin-bottom: 6px;
-  }
-
-  .name {
-    font-size: 18px;
-    font-weight: 750;
-    margin-bottom: 5px;
-  }
-
-  .small {
-    color: #5d6678;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-
-  .qr-section {
-    padding: 10px 22px 24px;
-    text-align: center;
-  }
-
-  .qr {
-    position: relative;
-    width: 190px;
-    height: 190px;
-    margin: 12px auto;
-    padding: 9px;
-    background: white;
-    border: 1px solid #d9dee8;
-    display: grid;
-    grid-template-columns: repeat(21, 1fr);
-    grid-template-rows: repeat(21, 1fr);
-    gap: 1px;
-  }
-
-  .cell { background: white; }
-  .cell.dark { background: #152039; }
-
-  .qr-stamp {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #b71c1c;
-    font-size: 24px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    transform: rotate(-35deg);
-    background: #ffffff8a;
-    text-shadow: 0 0 3px white;
-  }
-
-  .qr-note {
-    font-size: 11px;
-    color: #7a8495;
-    line-height: 1.5;
-  }
-
-  .bottom {
-    background: #f5f6f9;
-    padding: 15px 22px;
-    text-align: center;
-    color: #737e90;
-    font-size: 11px;
-    line-height: 1.6;
-  }
-
-  @media print {
-    body { background: white; padding: 0; }
-    .ticket { box-shadow: none; }
-  }
+*{box-sizing:border-box}
+body{
+  margin:0;background:#eef1ff;color:#171b2b;
+  font-family:Arial,Helvetica,sans-serif
+}
+.nav{
+  background:white;padding:19px 17px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid #e2e5ed
+}
+.logo{font-size:22px;font-weight:800;color:#087fa5}
+.logo span{color:#222638}
+.navicons{font-size:22px;letter-spacing:7px}
+.page-title{
+  background:#111528;color:white;
+  padding:24px 20px;font-size:25px;font-weight:750
+}
+main{max-width:520px;margin:16px auto;padding:0 12px 30px}
+.card{
+  background:#fff;border-radius:24px;overflow:hidden;
+  box-shadow:0 4px 18px #172b4d12
+}
+.content{padding:22px 20px}
+.demo{
+  display:inline-block;padding:6px 10px;
+  border:2px solid #c62828;color:#c62828;
+  font-size:11px;font-weight:900;letter-spacing:1.4px;
+  margin-bottom:20px
+}
+.date{font-size:15px;color:#687285;margin-bottom:20px}
+.route{
+  display:grid;grid-template-columns:1fr 30px 1fr;
+  gap:5px;align-items:center
+}
+.station:last-child{text-align:right}
+.time{font-size:27px;font-weight:800}
+.city{font-size:15px;font-weight:700;line-height:1.4;margin-top:6px}
+.arrow{text-align:center;font-size:24px;color:#087fa5}
+.train{
+  background:#f2f3fb;border-radius:12px;padding:13px;
+  margin-top:21px;font-size:14px;line-height:1.8
+}
+.person{
+  border-top:1px solid #e6e8ef;padding:20px;
+  display:flex;align-items:center;gap:15px
+}
+.avatar{
+  flex-shrink:0;width:62px;height:62px;border-radius:50%;
+  background:#f4a018;display:flex;align-items:center;
+  justify-content:center;font-size:21px;font-weight:800
+}
+.name{font-size:18px;font-weight:800;margin-bottom:6px}
+.birth{font-size:13px;color:#687285;line-height:1.6}
+.qr-area{text-align:center;padding:10px 20px 24px}
+.label{
+  font-size:11px;color:#778093;text-transform:uppercase;
+  letter-spacing:1px
+}
+#qrcode{
+  width:210px;height:210px;padding:8px;margin:15px auto;
+  border:1px solid #dfe3eb;background:white;
+  display:flex;align-items:center;justify-content:center
+}
+#qrcode img,#qrcode canvas{max-width:100%;height:auto}
+.info{
+  font-size:14px;line-height:1.9;color:#505b6e;
+  text-align:left;margin-top:18px
+}
+.button{
+  margin:20px 0 5px;border:2px solid #087fa5;
+  color:#087fa5;border-radius:30px;padding:15px 10px;
+  font-weight:750;text-align:center
+}
+.footer{
+  background:#f6f7fa;padding:16px 18px;text-align:center;
+  color:#707b8d;font-size:11px;line-height:1.7
+}
+@media(max-width:360px){
+  .content{padding:18px 13px}
+  .time{font-size:23px}
+  .city{font-size:13px}
+}
 </style>
 </head>
 <body>
 
-<main class="ticket">
-  <header class="top">
-    <div class="brand">SNCF <span>CONNECT</span></div>
-    <div class="fiction">BILLET FICTIF</div>
-  </header>
+<header class="nav">
+  <div class="logo">sncf<span>connect</span></div>
+  <div class="navicons">♙ ♡ ☰</div>
+</header>
 
-  <section class="journey">
-    <div class="date">Voyage du 18 septembre 2026</div>
+<div class="page-title">Votre billet</div>
+
+<main>
+<section class="card">
+
+  <div class="content">
+    <div class="demo">MAQUETTE FICTIVE</div>
+
+    <div class="date">Exemple de voyage · septembre 2026</div>
 
     <div class="route">
       <div class="station">
         <div class="time">08:12</div>
-        <div class="city">Gare de départ</div>
+        <div class="city">Marseille<br>Saint-Charles</div>
       </div>
-
       <div class="arrow">→</div>
-
       <div class="station">
         <div class="time">10:46</div>
-        <div class="city">Gare d’arrivée</div>
+        <div class="city">Tarascon-<br>sur-Rhône</div>
       </div>
     </div>
 
     <div class="train">
-      <strong>Train :</strong> TGV INOUI — exemple<br>
-      <strong>Voiture :</strong> 6 &nbsp;·&nbsp;
-      <strong>Place :</strong> 42<br>
-      <strong>Classe :</strong> 2de classe
+      <strong>Train :</strong> ZOU ! — exemple<br>
+      <strong>Départ :</strong> 08:12<br>
+      <strong>Arrivée :</strong> 10:46<br>
+      <strong>Classe :</strong> 2de classe<br>
+      <strong>Place :</strong> placement libre
     </div>
-  </section>
+  </div>
 
-  <section class="traveler">
-    <div class="label">Voyageur</div>
-    <div class="name">NOM DU VOYAGEUR</div>
-    <div class="small">
-      Billet de démonstration<br>
-      Référence fictive : DEMO-2026
+  <div class="person">
+    <div class="avatar">AB</div>
+    <div>
+      <div class="name">PRÉNOM NOM</div>
+      <div class="birth">Voyageur de démonstration<br>
+      Date de naissance : JJ/MM/AAAA</div>
     </div>
-  </section>
+  </div>
 
-  <section class="qr-section">
-    <div class="label">Code graphique de démonstration</div>
+  <div class="qr-area">
+    <div class="label">QR code de démonstration</div>
+    <div id="qrcode"></div>
 
-    <div class="qr" id="qr">
-      <div class="qr-stamp">FICTIF</div>
+    <div class="info">
+      <strong>Détails du voyage</strong><br>
+      Date : 19/09/2026 — exemple<br>
+      Achat : 18/09/2026 — exemple<br>
+      Distance : 100 km — exemple<br>
+      Prix : 22,40 € — exemple<br>
+      Sens : aller simple<br>
+      Classe : 2
     </div>
 
-    <div class="qr-note">
-      Code décoratif non fonctionnel.<br>
-      Cette maquette ne permet pas l’accès à un train.
-    </div>
-  </section>
+    <div class="button">Document de démonstration</div>
+    <div class="label">Référence fictive : DEMO-2026</div>
+  </div>
 
-  <footer class="bottom">
-    Maquette personnelle à but illustratif.<br>
-    Document fictif — non valable pour voyager.
+  <footer class="footer">
+    MAQUETTE SCOLAIRE — NON VALABLE POUR VOYAGER<br>
+    Le QR code ouvre une page de démonstration et ne valide aucun billet.
   </footer>
+
+</section>
 </main>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  // Génère un motif visuel aléatoire, sans données de validation.
-  const qr = document.getElementById("qr");
-  let seed = 20260918;
-
-  function randomBit() {
-    seed = (seed * 9301 + 49297) % 233280;
-    return seed / 233280 > 0.5;
-  }
-
-  const size = 21;
-  const reserved = Array.from({length: size}, () =>
-    Array(size).fill(false)
-  );
-
-  function finder(x, y) {
-    for (let dy = 0; dy < 7; dy++) {
-      for (let dx = 0; dx < 7; dx++) {
-        reserved[y + dy][x + dx] = true;
-
-        const edge = dx === 0 || dx === 6 ||
-                     dy === 0 || dy === 6;
-        const center = dx >= 2 && dx <= 4 &&
-                       dy >= 2 && dy <= 4;
-
-        const cell = document.createElement("div");
-        cell.className = "cell" + ((edge || center) ? " dark" : "");
-        cell.style.gridColumn = x + dx + 1;
-        cell.style.gridRow = y + dy + 1;
-        qr.appendChild(cell);
-      }
-    }
-  }
-
-  finder(0, 0);
-  finder(14, 0);
-  finder(0, 14);
-
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      if (reserved[y][x]) continue;
-
-      const cell = document.createElement("div");
-      cell.className = "cell" + (randomBit() ? " dark" : "");
-      cell.style.gridColumn = x + 1;
-      cell.style.gridRow = y + 1;
-      qr.appendChild(cell);
-    }
-  }
+new QRCode(document.getElementById("qrcode"), {
+  text: "https://example.com/",
+  width: 190,
+  height: 190,
+  colorDark: "#111111",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
+});
 </script>
 
 </body>
