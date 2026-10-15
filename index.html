@@ -1,50 +1,189 @@
 
-<section class="voyage-details">
-  <h2>Détails du voyage</h2>
-
-  <p><strong>Départ :</strong> Marseille Saint-Charles</p>
-  <p><strong>Arrivée :</strong> Tarascon-sur-Rhône</p>
-  <p><strong>Date :</strong> 19/09/2026</p>
-  <p><strong>Heure de départ :</strong> À compléter</p>
-  <p><strong>Heure d'arrivée :</strong> À compléter</p>
-  <p><strong>Train :</strong> ZOU ! 876558</p>
-  <p><strong>Classe :</strong> 2de classe, placement libre</p>
-  <p><strong>Distance :</strong> 100 km</p>
-  <p><strong>Prix :</strong> 22,40 €</p>
-  <p><strong>Type de trajet :</strong> Aller simple</p>
-</section>
-
-<section class="voyageur-details">
-  <h2>Coordonnées du voyageur</h2>
-
-  <p><strong>Nom :</strong> NEDJAH</p>
-  <p><strong>Prénom :</strong> HELAL</p>
-  <p><strong>Date de naissance :</strong> 04/06/1985</p>
-  <p><strong>Adresse e-mail :</strong> À compléter</p>
-</section>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billet de train — Maquette fictive</title>
 
 <style>
-.voyage-details,
-.voyageur-details {
-  max-width: 570px;
-  margin: 20px auto;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px 12px;
+  background: #eef2f8;
+  font-family: Arial, sans-serif;
+  color: #202633;
+}
+
+.billet {
+  position: relative;
+  max-width: 520px;
+  margin: auto;
   padding: 24px;
   background: white;
-  border-radius: 20px;
-  font-family: Arial, sans-serif;
-  color: #171a23;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px #00000015;
+  overflow: hidden;
 }
 
-.voyage-details h2,
-.voyageur-details h2 {
-  font-size: 23px;
-  margin-top: 0;
+.marque {
+  text-align: center;
+  color: #a02020;
+  border: 2px solid #a02020;
+  padding: 8px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  transform: rotate(-3deg);
+  margin: 8px auto 24px;
+  width: fit-content;
 }
 
-.voyage-details p,
-.voyageur-details p {
-  font-size: 17px;
-  line-height: 1.5;
-  margin: 10px 0;
+.entete {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 6px;
 }
+
+.sous-titre {
+  color: #697386;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.trajet {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 0;
+  border-top: 1px solid #dce2ec;
+  border-bottom: 1px solid #dce2ec;
+}
+
+.gare {
+  flex: 1;
+}
+
+.gare:last-child {
+  text-align: right;
+}
+
+.heure {
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.ville {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.fleche {
+  font-size: 24px;
+  color: #526782;
+}
+
+.info {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e9f0;
+}
+
+.libelle {
+  color: #697386;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.valeur {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.code-fictif {
+  width: 150px;
+  height: 150px;
+  margin: 22px auto 10px;
+  border: 2px dashed #a02020;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #a02020;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 12px;
+}
+
+.note {
+  text-align: center;
+  font-size: 12px;
+  color: #697386;
+}
+
 </style>
+</head>
+
+<body>
+<main class="billet">
+
+  <div class="marque">FICTIF — NON VALABLE</div>
+
+  <div class="entete">Billet de train</div>
+  <div class="sous-titre">Maquette visuelle non officielle</div>
+
+  <section class="trajet">
+    <div class="gare">
+      <div class="heure">HH:MM</div>
+      <div class="ville">Départ</div>
+    </div>
+
+    <div class="fleche">→</div>
+
+    <div class="gare">
+      <div class="heure">HH:MM</div>
+      <div class="ville">Arrivée</div>
+    </div>
+  </section>
+
+  <div class="info">
+    <div class="libelle">VOYAGEUR</div>
+    <div class="valeur">Nom Prénom</div>
+  </div>
+
+  <div class="info">
+    <div class="libelle">DATE DU VOYAGE</div>
+    <div class="valeur">JJ/MM/AAAA</div>
+  </div>
+
+  <div class="info">
+    <div class="libelle">TRAIN</div>
+    <div class="valeur">Numéro du train</div>
+  </div>
+
+  <div class="info">
+    <div class="libelle">TRAJET</div>
+    <div class="valeur">Gare de départ → Gare d’arrivée</div>
+  </div>
+
+  <div class="info">
+    <div class="libelle">VOITURE ET PLACE</div>
+    <div class="valeur">À renseigner</div>
+  </div>
+
+  <div class="code-fictif">
+    QR CODE FICTIF<br>
+    NON VALABLE POUR VOYAGER
+  </div>
+
+  <div class="note">
+    Document de démonstration uniquement.
+  </div>
+
+</main>
+</body>
+</html>
