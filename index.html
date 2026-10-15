@@ -1,3 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title></title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;background:#eef1ff;color:#171b2b;
+  font-family:Arial,Helvetica,sans-serif
+}
+.nav{
+  background:white;padding:19px 17px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid #e2e5ed
+}
+.logo{font-size:22px;font-weight:800;color:#087fa5}
+.logo span{color:#222638}
+.navicons{font-size:22px;letter-spacing:7px}
+.page-title{
+  background:#111528;color:white;
+  padding:24px 20px;font-size:25px;font-weight:750
+}
+main{max-width:520px;margin:16px auto;padding:0 12px 30px}
+.card{
+  background:#fff;border-radius:24px;overflow:hidden;
+  box-shadow:0 4px 18px #172b4d12
+}
+.content{padding:22px 20px}
+.demo{
+  display:inline-block;padding:6px 10px;
+  border:2px solid #c62828;color:#c62828;
+  font-size:11px;font-weight:900;letter-spacing:1.4px;
+  margin-bottom:20px
+}
+.date{font-size:15px;color:#687285;margin-bottom:20px}
+.route{
+  display:grid;grid-template-columns:1fr 30px 1fr;
+  gap:5px;align-items:center
+}
+.station:last-child{text-align:right}
+.time{font-size:27px;font-weight:800}
+.city{font-size:15px;font-weight:700;line-height:1.4;margin-top:6px}
+.arrow{text-align:center;font-size:24px;color:#087fa5}
+.train{
+  background:#f2f3fb;border-radius:12px;padding:13px;
+  margin-top:21px;font-size:14px;line-height:1.8
+}
+.person{
+  border-top:1px solid #e6e8ef;padding:20px;
+  display:flex;align-items:center;gap:15px
+}
+.avatar{
+  flex-shrink:0;width:62px;height:62px;border-radius:50%;
+  background:#f4a018;display:flex;align-items:center;
+  justify-content:center;font-size:21px;font-weight:800
+}
+.name{font-size:18px;font-weight:800;margin-bottom:6px}
+.birth{font-size:13px;color:#687285;line-height:1.6}
+.qr-area{text-align:center;padding:10px 20px 24px}
+.label{
+  font-size:11px;color:#778093;text-transform:uppercase;
+  letter-spacing:1px
+}
+#qrcode{
+  width:210px;height:210px;padding:8px;margin:15px auto;
+  border:1px solid #dfe3eb;background:white;
+  display:flex;align-items:center;justify-content:center
+}
+#qrcode img,#qrcode canvas{max-width:100%;height:auto}
+.info{
+  font-size:14px;line-height:1.9;color:#505b6e;
+  text-align:left;margin-top:18px
+}
+.button{
+  margin:20px 0 5px;border:2px solid #087fa5;
+  color:#087fa5;border-radius:30px;padding:15px 10px;
+  font-weight:750;text-align:center
+}
+.footer{
+  background:#f6f7fa;padding:16px 18px;text-align:center;
+  color:#707b8d;font-size:11px;line-height:1.7
+}
+@media(max-width:360px){
+  .content{padding:18px 13px}
+  .time{font-size:23px}
+  .city{font-size:13px}
+}
+</style>
+</head>
 <body>
 
 <header class="nav">
@@ -7,70 +98,67 @@
 
 <div class="page-title">Votre billet</div>
 
+<div class="date" style="text-align:center; margin:16px 0;">
+  voyage · septembre 2026
+</div>
+
 <main>
-  <section class="card">
+<section class="card">
 
-    <div class="content">
-      <div class="date">Voyage · septembre 2026</div>
-
-      <div class="route">
-        <div class="station">
-          <div class="time">08:12</div>
-          <div class="city">Marseille<br>Saint-Charles</div>
-        </div>
-
-        <div class="arrow">→</div>
-
-        <div class="station">
-          <div class="time">10:46</div>
-          <div class="city">Tarascon-<br>sur-Rhône</div>
-        </div>
+    <div class="route">
+      <div class="station">
+        <div class="time">08:12</div>
+        <div class="city">Marseille<br>Saint-Charles</div>
       </div>
-
-      <div class="train">
-        <strong>Train :</strong> ZOU !<br>
-        <strong>Départ :</strong> 08:12<br>
-        <strong>Arrivée :</strong> 10:46<br>
-        <strong>Classe :</strong> 2de classe<br>
-        <strong>Place :</strong> placement libre
+      <div class="arrow">→</div>
+      <div class="station">
+        <div class="time">10:46</div>
+        <div class="city">Tarascon-<br>sur-Rhône</div>
       </div>
     </div>
 
-    <div class="person">
-      <div class="avatar">AB</div>
-      <div>
-        <div class="name">PRÉNOM NOM</div>
-        <div class="birth">
-          Voyageur<br>
-          Date de naissance : JJ/MM/AAAA
-        </div>
-      </div>
+    <div class="train">
+      <strong>Train :</strong> ZOU !<br>
+      <strong>Départ :</strong> 08:12<br>
+      <strong>Arrivée :</strong> 10:46<br>
+      <strong>Classe :</strong> 2de classe<br>
+      <strong>Place :</strong> placement libre
+    </div>
+  </div>
+
+  <div class="person">
+    <div class="avatar">AB</div>
+    <div>
+      <div class="name">PRÉNOM NOM</div>
+      <div class="birth">Voyageur<br>
+      Date de naissance : JJ/MM/AAAA</div>
+    </div>
+  </div>
+
+  <div class="qr-area">
+    <div class="label">QR code</div>
+    <div id="qrcode"></div>
+
+    <div class="info">
+      <strong>Détails du voyage</strong><br>
+      Date : 19/09/2026<br>
+      Achat : 18/09/2026<br>
+      Distance : 100 km<br>
+      Prix : 22,40 €<br>
+      Sens : aller simple<br>
+      Classe : 2
     </div>
 
-    <div class="qr-area">
-      <div class="label">QR code</div>
-      <div id="qrcode"></div>
+    <div class="button">voir l'e billet (pdf)</div>
+    <div class="label">Référence : 17358362825826</div>
+  </div>
 
-      <div class="info">
-        <strong>Détails du voyage</strong><br>
-        Date : 19/09/2026<br>
-        Achat : 18/09/2026<br>
-        Distance : 100 km<br>
-        Prix : 22,40 €<br>
-        Sens : aller simple<br>
-        Classe : 2
-      </div>
+  <footer class="footer">
+    billet — non remboursable ni échangeable<br>
+    veuillez présenter votre QR code.
+  </footer>
 
-      <div class="button">Voir l'e-billet (PDF)</div>
-      <div class="label">Référence : 17358362825826</div>
-    </div>
-
-    <footer class="footer">
-      Maquette de billet — exemple non valable pour voyager<br>
-      QR code de démonstration uniquement.
-    </footer>
-
-  </section>
+</section>
 </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -86,3 +174,4 @@ new QRCode(document.getElementById("qrcode"), {
 </script>
 
 </body>
+</html>
